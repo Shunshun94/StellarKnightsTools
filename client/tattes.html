@@ -17,8 +17,17 @@
 			<span v-bind:class="{ active: activeTab===0 }" class="tattes-menu-tab" v-on:click="changeTab(0)">ブリンガー</span><span v-bind:class="{ active: activeTab===1 }" class="tattes-menu-tab" v-on:click="changeTab(1)">シース</span><span v-bind:class="{ active: activeTab===2 }" class="tattes-menu-tab" v-on:click="changeTab(2)">観客</span>
 		</nav>
 		<div id="tattes-contents">
-			<tattes-bringer v-show="activeTab===0" v-bind:chat="chat" v-bind:bringer="bringer"></tattes-bringer>
-			<tattes-sheath v-show="activeTab===1" v-bind:chat="chat" v-bind:sheath="sheath"></tattes-sheath>
+			<tattes-bringer
+				v-show="activeTab===0"
+				v-bind:chat="chat"
+				v-bind:bringer="bringer"
+				v-on:tattes-bringer-events-sendchat="sendChat"
+				></tattes-bringer>
+			<tattes-sheath
+				v-show="activeTab===1"
+				v-bind:chat="chat"
+				v-bind:sheath="sheath"
+				v-on:tattes-sheath-events-sendchat="sendChat"></tattes-sheath>
 			<section id="tattes-audience"></section>
 		</div>
 

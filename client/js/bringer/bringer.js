@@ -3,7 +3,9 @@ Vue.component('tattes-bringer', {
 	template: `
 		<section id="${Tattes.Bringer.CONSTS.ID}">
 			<h2 id="${Tattes.Bringer.CONSTS.ID}-name">{{bringer.name}}</h2>
-			<common-chat v-bind:chat="chat"></common-chat>
+			<common-chat
+				v-on:${Tattes.Chat.CommonChat.CONSTS.ID}-events-sendChat="sendChat"
+				v-bind:chat="chat"></common-chat>
 			<tattes-character-status
 				v-bind:character="bringer.character"
 				v-bind:hopedespair="bringer.hopedespair"
@@ -13,5 +15,14 @@ Vue.component('tattes-bringer', {
 				v-bind:id="bringer.id"
 				v-bind:isBringer="bringer.isBringer"
 			></tattes-character-status>
-		</section>`
+		</section>`,
+		methods: {
+			sendChat: function(message) {
+				const data = {
+						name: this.bringer.name,
+						message: message
+				};
+				this.$emit(`${Tattes.Bringer.CONSTS.ID}-events-sendchat`, data);
+			}
+		}
 });

@@ -1,15 +1,36 @@
 Vue.component('common-chat', {
 	props: ["chat"],
+	data: function() {
+		return {
+			text: ''
+		};
+	},
 	template: `
 		<div class="${Tattes.Chat.CommonChat.CONSTS.ID}">
 			<div class="${Tattes.Chat.CommonChat.CONSTS.ID}-input">
-				<textarea class="${Tattes.Chat.CommonChat.CONSTS.ID}-input-text"></textarea>
+				<textarea v-model="text"　@keyup.enter="submit" class="${Tattes.Chat.CommonChat.CONSTS.ID}-input-text"></textarea>
 			</div>
 			<div class="${Tattes.Chat.CommonChat.CONSTS.ID}-logs">
 				<common-chat-post v-for="post in chat.log" :key="post[0]" v-bind:post="post"></common-chat-post>
 			</div>
 		</div>
-	`
+	`,
+	methods: {
+		submit: function(e) {
+			if(e.shiftKey) {
+				return;
+			}
+			e.preventDefault();
+			const text = this.text.trim();
+			if(Tattes.Chat.CommonChat.CONSTS.UNEXPECTED.includes(text) || /^\s+$/.test(text)) {
+				if(! window.confirm(Tattes.Chat.CommonChat.CONSTS.IS_IT_OK)) {
+					return;
+				}
+			}
+			this.text = '';
+			this.$emit(`${Tattes.Chat.CommonChat.CONSTS.ID}-events-sendChat`, text);
+		}
+	}
 });
 
 Vue.component('common-chat-post', {

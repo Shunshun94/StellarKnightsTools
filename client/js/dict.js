@@ -32,7 +32,9 @@ Tattes.Character.Status.CONSTS = {
 Tattes.Chat = {};
 Tattes.Chat.CommonChat = {};
 Tattes.Chat.CommonChat.CONSTS = {
-		ID: 'tattes-chat-commonchat'
+		ID: 'tattes-chat-commonchat',
+		UNEXPECTED: ['[]', '""', `""`, '「」', '()', '（）', '<>', '＜＞', ''],
+		IS_IT_OK: '誤送信な気がします。本当に送りますか?'
 }
 Tattes.Chat.CommonChat.REGEXP = [
 	/^\*?\*?([^:：\*\n]+)\*?\*?[:：]?(「[^「]*」)/,
