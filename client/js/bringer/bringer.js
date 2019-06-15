@@ -1,8 +1,9 @@
 Vue.component('tattes-bringer', {
-	props: ['bringer'],
+	props: ['bringer', 'chat'],
 	template: `
 		<section id="${Tattes.Bringer.CONSTS.ID}">
 			<h2 id="${Tattes.Bringer.CONSTS.ID}-name">{{bringer.name}}</h2>
+			<common-chat v-bind:chat="chat"></common-chat>
 			<tattes-character-status
 				v-bind:character="bringer.character"
 				v-bind:hopedespair="bringer.hopedespair"

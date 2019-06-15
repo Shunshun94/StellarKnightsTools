@@ -28,3 +28,14 @@ Tattes.Character.Status.CONSTS = {
 		OF: 'の',
 		AND: 'にして'
 };
+
+Tattes.Chat = {};
+Tattes.Chat.CommonChat = {};
+Tattes.Chat.CommonChat.CONSTS = {
+		ID: 'tattes-chat-commonchat'
+}
+Tattes.Chat.CommonChat.REGEXP = [
+	/^\*?\*?([^:：\*\n]+)\*?\*?[:：]?(「[^「]*」)/,
+	/^\*?\*?([^:：\*\n]+)\*?\*?[:：]([^「]*)/
+];
+

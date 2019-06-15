@@ -1,0 +1,49 @@
+@CHARSET "UTF-8";
+
+.tattes-chat-commonchat {
+	border:3px black solid;
+	font-size:80%;
+	width:600px;
+	height:600px;
+	box-sizing: border-box;
+	position:absolute;
+	top:28px;
+	left:280px;
+	display:inline-block;
+}
+
+.tattes-chat-commonchat-input {
+	height:120px;
+	width:100%;
+	position:relative;
+}
+
+.tattes-chat-commonchat-input-text {
+	resize:none;
+	height:110px;
+	width:580px;
+	margin:auto;
+	position:relative;
+	top:5px;
+	left:7px;
+}
+
+.tattes-chat-commonchat-logs {
+	height:474px;
+	overflow:scroll;
+}
+
+.tattes-chat-commonchat-logs-post:nth-child(even) {
+	background-color:aliceblue;
+}
+
+.tattes-chat-commonchat-logs-post-name {
+	display:block;
+	font-weight: bold;
+}
+.tattes-chat-commonchat-logs-post-message {
+	display:block;
+	margin-top:0px;
+	margin-bottom:0px;
+	margin-left:8px;
+}

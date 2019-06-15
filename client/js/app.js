@@ -7,7 +7,7 @@ const initTattes = async (params) =>{
 	const partnerId = characterData.partner.bringer.url.split('=')[1];
 	const partnerData = await characterSheetClient.sendRequest(Tattes.CONSTS.SYSTEM_CODE, partnerId);
 	
-	const discordClient = null; //new io.github.shunshun94.trpg.discord.Room(params.token, params.room.split(','));
+	const discordClient = new io.github.shunshun94.trpg.discord.Room(params.token, params.room.split(','));
 
 	const data = {
 		bringer: characterData.base,
@@ -21,16 +21,27 @@ const initTattes = async (params) =>{
 	data.sheath.hopedespair.choice = Tattes.FUNCS.switchHope(partnerData.base.hopedespair);
 	data.sheath.isBringer = false;
 	data.activeTab = 0;
+	data.chat = {
+		log:[]
+	};
 	console.log(JSON.stringify(data, null, 2));
-	new Vue({
+	const vueObject = new Vue({
 		el: '#tattes',
 		data: data,
 		methods: {
 			changeTab: function(num) {
 				this.activeTab = num;
+			},
+			getChat: function() {
+				discordClient.getChat().then((result)=>{
+					data.chat.log = result.chatMessageDataLog.reverse();
+				}, console.warn);
 			}
 		}
 	});
+	setInterval(()=>{
+		vueObject.getChat();
+	}, 5000);
 };
 
 Tattes.FUNCS = {};
