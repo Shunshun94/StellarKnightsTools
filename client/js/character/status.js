@@ -1,6 +1,6 @@
 Vue.component('tattes-character-status', {
 	props: [
-		'character', 'hopedespair', 'personalflower', 'note',
+		'character', 'hopedespair', 'personalflower', 'keyword', 'note',
 		'isBringer', 'id'],
 	template: `<div class="${Tattes.Character.Status.CONSTS.ID}">
 	<div class="${Tattes.Character.Status.CONSTS.ID}-image"
@@ -16,6 +16,10 @@ Vue.component('tattes-character-status', {
 		<hr/>
 		<span class="${Tattes.Character.Status.CONSTS.ID}-character">
 			<span class="${Tattes.Character.Status.CONSTS.ID}-character-value">{{character["1st"]}}${Tattes.Character.Status.CONSTS.AND}{{character["2nd"]}}</span>
+		</span>
+		<hr/>
+		<span class="${Tattes.Character.Status.CONSTS.ID}-keyword">
+			<span class="${Tattes.Character.Status.CONSTS.ID}-keyword-value">{{keyword}}</span>
 		</span>	
 	</div>
 

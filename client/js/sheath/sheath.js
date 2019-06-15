@@ -7,6 +7,7 @@ Vue.component('tattes-sheath', {
 				v-bind:character="sheath.character"
 				v-bind:hopedespair="sheath.hopedespair"
 				v-bind:personalflower="sheath.personalflower"
+				v-bind:keyword="sheath.keyword"
 				v-bind:note="sheath.phrase"
 				v-bind:id="sheath.id"
 				v-bind:isBringer="sheath.isBringer"

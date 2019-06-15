@@ -7,6 +7,7 @@ Vue.component('tattes-bringer', {
 				v-bind:character="bringer.character"
 				v-bind:hopedespair="bringer.hopedespair"
 				v-bind:personalflower="bringer.personalflower"
+				v-bind:keyword="bringer.keyword"
 				v-bind:note="bringer.phrase"
 				v-bind:id="bringer.id"
 				v-bind:isBringer="bringer.isBringer"

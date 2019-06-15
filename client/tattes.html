@@ -1,21 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="css/tattes.css" />
 <link rel="stylesheet" href="css/character-status.css" />
 <meta charset="UTF-8">
 <title>TatteS!</title>
 </head>
 <body>
-
+	<header><h1>TatteS!</h1></header>
 	<div id="tattes">
-		<h1>TatteS!</h1>
-		<nav id="tattes-menu"></nav>
-		<tattes-bringer v-bind:bringer="bringer"></tattes-bringer>
-		<tattes-sheath v-bind:sheath="sheath"></tattes-sheath>
-		<section id="tattes-audience"></section>
-	</div>
+		
+		<nav id="tattes-menu">
+			<span v-bind:class="{ active: activeTab===0 }" class="tattes-menu-tab" v-on:click="changeTab(0)">ブリンガー</span><span class="tattes-menu-tab" v-on:click="changeTab(1)">シース</span><span class="tattes-menu-tab" v-on:click="changeTab(2)">観客</span>
+		</nav>
+		<div id="tattes-contents">
+			<tattes-bringer v-show="activeTab===0" v-bind:bringer="bringer"></tattes-bringer>
+			<tattes-sheath v-show="activeTab===1" v-bind:sheath="sheath"></tattes-sheath>
+			<section id="tattes-audience"></section>
+		</div>
 
+	</div>
+	<footer>
+	<a target="_blank" href="https://twitter.com/Shunshun94">ツール作者連絡先 (Twitter)</a> | <a target="_blank" href="https://shunshun94.github.io/StellarKnightsTools/">GitHub</a> | <a target="_blank" href="http://amzn.asia/8mNqdKy">ひよこのほしい物りすと</a><br/>
+	本ツールは「どらこにあん」及び「株式会社KADOKAWA」が権利を有する『銀剣のステラナイツ』の二次創作です。<br/>
+	(C)Fuyu Takizato / Draconian<br/>
+	(C)KADOKAWA<br/>
+	<a href="https://fujimi-trpg-online.jp/info/stellar_ug.html" target="_blank">【銀剣のステラナイツ】二次創作ガイドライン</a>
+	</footer>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="https://shunshun94.github.io/shared/jquery/com/hiyoko/util/v2/utils.js"></script>
 	<script src="https://shunshun94.github.io/shared/other/io/github/shunshun94/trpg/characterSheetsMasashige/client.js"></script>
 	<script src="https://shunshun94.github.io/shared/other/io/github/shunshun94/trpg/clientSpec.js"></script>
 	<script src="https://shunshun94.github.io/shared/other/io/github/shunshun94/trpg/discord/client.js"></script>

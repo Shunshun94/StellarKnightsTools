@@ -20,10 +20,16 @@ const initTattes = async (params) =>{
 	data.sheath.id = characterId;
 	data.sheath.hopedespair.choice = Tattes.FUNCS.switchHope(partnerData.base.hopedespair);
 	data.sheath.isBringer = false;
+	data.activeTab = 0;
 	console.log(JSON.stringify(data, null, 2));
 	new Vue({
 		el: '#tattes',
-		data: data
+		data: data,
+		methods: {
+			changeTab: function(num) {
+				this.activeTab = num;
+			}
+		}
 	});
 };
 
@@ -35,7 +41,16 @@ Tattes.FUNCS.switchHope = (hopedespair) => {
 		return Tattes.CONSTS.HOPE;
 	}
 };
-
+Tattes.FUNCS.getQueries = () => {
+	const query = location.search.slice(1).split('&');
+	const paramLength = query.length;
+	let result = {};
+	for(var i = 0; i < paramLength; i++) {
+		const pair = query[i].split('=');
+		result[pair[0]] = pair.slice(1).join('=');
+	}
+	return result;
+};
 
 
 // https://character-sheets.appspot.com/stellar/image?key=ahVzfmNoYXJhY3Rlci1zaGVldHMtbXByFwsSDUNoYXJhY3RlckRhdGEY1fjLpwIM&1560382859483

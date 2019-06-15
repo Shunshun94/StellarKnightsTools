@@ -1,0 +1,43 @@
+@CHARSET "UTF-8";
+
+* {
+	box-sizing: border-box;
+	font-family: "BIZ UDゴシック","UD Shin Go NT Light JIS2004","UD デジタル 教科書体 N-R", Verdana, Roboto, "Droid Sans", "游ゴシック", YuGothic, "メイリオ", Meiryo, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "ＭＳ Ｐゴシック", sans-serif;
+}
+
+h1, h2 {
+	margin:4px;
+}
+
+footer {
+	border-top:1px black solid;
+	font-size:60%;
+	padding:4px;
+	background-color:whitesmoke;
+}
+
+#tattes-menu > .tattes-menu-tab {
+	display:inline-block;
+	width:120px;
+	text-align:center;
+	padding:4px;
+	border:1px solid black;
+	background-color:dimgray;
+	color:white;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+}
+
+#tattes-menu > .tattes-menu-tab:hover {
+	background-color:silver;
+	color:black;
+}
+
+#tattes-menu > .tattes-menu-tab.active {
+	background-color:white;
+	color:black;
+}
+
+#tattes-contents {
+	border-top:1px solid black;
+}
