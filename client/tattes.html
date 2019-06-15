@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="css/character-status.css" />
+<meta charset="UTF-8">
+<title>TatteS!</title>
+</head>
+<body>
+
+	<div id="tattes">
+		<h1>TatteS!</h1>
+		<nav id="tattes-menu"></nav>
+		<tattes-bringer v-bind:bringer="bringer"></tattes-bringer>
+		<tattes-sheath v-bind:sheath="sheath"></tattes-sheath>
+		<section id="tattes-audience"></section>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="https://shunshun94.github.io/shared/other/io/github/shunshun94/trpg/characterSheetsMasashige/client.js"></script>
+	<script src="https://shunshun94.github.io/shared/other/io/github/shunshun94/trpg/clientSpec.js"></script>
+	<script src="https://shunshun94.github.io/shared/other/io/github/shunshun94/trpg/discord/client.js"></script>
+	<script src="./js/dict.js"></script>
+	<script src="./js/app.js"></script>
+	<script src="./js/character/status.js"></script>
+	<script src="./js/bringer/bringer.js"></script>
+	<script src="./js/sheath/sheath.js"></script>
+	<script src="./js/init.js"></script>
+</body>
+</html>
