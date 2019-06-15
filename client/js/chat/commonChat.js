@@ -23,7 +23,7 @@ Vue.component('common-chat-post', {
 	computed: {
 		name: function() {
 			if(this.post[1].message.indexOf('http') > -1) {
-				return this.post[1].name;
+				return this.post[1].senderName;
 			}
 			const reResults = Tattes.Chat.CommonChat.REGEXP.map((re, i)=>{
 				return re.exec(this.post[1].message);
