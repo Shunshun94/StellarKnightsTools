@@ -24,3 +24,7 @@
 ### Vue.js
 
 ライセンス情報: https://jp.vuejs.org/
+
+### AlertifyJS
+
+ライセンス情報： https://github.com/MohammadYounes/AlertifyJS/blob/master/LICENSE
