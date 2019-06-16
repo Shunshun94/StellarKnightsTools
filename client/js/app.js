@@ -34,7 +34,7 @@ const initTattes = async (params) =>{
 			},
 			getChat: function() {
 				discordClient.getChat().then((result)=>{
-					data.chat.log = result.chatMessageDataLog.reverse();
+					this.chat.log = result.chatMessageDataLog.reverse();
 				}, console.warn);
 			},
 			sendChat: function(messageData) {
