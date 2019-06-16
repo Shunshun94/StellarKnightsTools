@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="css/tattes.css" />
+<link rel="stylesheet" href="css/audience.css" />
+<link rel="stylesheet" href="css/bringer.css" />
+<link rel="stylesheet" href="css/sheath.css" />
+<link rel="stylesheet" href="css/chat.css" />
+<link rel="stylesheet" href="css/character-status.css" />
+<meta charset="UTF-8">
+<title>TatteS!</title>
+</head>
+<body>
+	<header><h1>TatteS!</h1></header>
+	<div id="tattes">
+		
+		<nav id="tattes-menu">
+			<span v-bind:class="{ active: activeTab===0 }" class="tattes-menu-tab" v-on:click="changeTab(0)">ブリンガー</span><span v-bind:class="{ active: activeTab===1 }" class="tattes-menu-tab" v-on:click="changeTab(1)">シース</span><span v-bind:class="{ active: activeTab===2 }" class="tattes-menu-tab" v-on:click="changeTab(2)">観客</span>
+		</nav>
+		<div id="tattes-contents">
+			<tattes-bringer
+				v-show="activeTab===0"
+				v-bind:chat="chat"
+				v-bind:bringer="bringer"
+				v-on:tattes-bringer-events-sendchat="sendChat"
+				></tattes-bringer>
+			<tattes-sheath
+				v-show="activeTab===1"
+				v-bind:chat="chat"
+				v-bind:sheath="sheath"
+				v-on:tattes-sheath-events-sendchat="sendChat"></tattes-sheath>
+			<tattes-audience
+				v-show="activeTab===2"
+				v-bind:chat="chat"
+				v-bind:plname="bringer.player"
+				v-on:tattes-audience-events-sendchat="sendChat"></tattes-audience>
+		</div>
+
+	</div>
+	<footer>
+	<a target="_blank" href="https://twitter.com/Shunshun94">ツール作者連絡先 (Twitter)</a> | <a target="_blank" href="https://shunshun94.github.io/StellarKnightsTools/">GitHub</a> | <a target="_blank" href="http://amzn.asia/8mNqdKy">ひよこのほしい物りすと</a><br/>
+	本ツールは「どらこにあん」及び「株式会社KADOKAWA」が権利を有する『銀剣のステラナイツ』の二次創作です。<br/>
+	(C)Fuyu Takizato / Draconian<br/>
+	(C)KADOKAWA<br/>
+	<a href="https://fujimi-trpg-online.jp/info/stellar_ug.html" target="_blank">【銀剣のステラナイツ】二次創作ガイドライン</a>
+	</footer>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="https://shunshun94.github.io/shared/external/discord.io/index.js"></script>
+	<script src="https://shunshun94.github.io/shared/jquery/com/hiyoko/util/v2/utils.js"></script>
+	<script src="https://shunshun94.github.io/shared/other/io/github/shunshun94/trpg/characterSheetsMasashige/client.js"></script>
+	<script src="https://shunshun94.github.io/shared/other/io/github/shunshun94/trpg/clientSpec.js"></script>
+	<script src="https://shunshun94.github.io/shared/other/io/github/shunshun94/trpg/discord/client.js"></script>
+	<script src="./js/dict.js"></script>
+	<script src="./js/app.js"></script>
+	<script src="./js/chat/commonChat.js"></script>
+	<script src="./js/character/status.js"></script>
+	<script src="./js/audience/audience.js"></script>
+	<script src="./js/bringer/bringer.js"></script>
+	<script src="./js/sheath/sheath.js"></script>
+	<script src="./js/init.js"></script>
+</body>
+</html>

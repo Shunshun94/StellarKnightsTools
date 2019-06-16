@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="css/tattes.css" />
+<meta charset="UTF-8">
+<title>TatteS!</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/alertify.min.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/default.min.css"/>
+<style>
+.explanation {
+	font-size:70%;
+	padding-left:16px;
+}
+#tattes-login {
+	height:500px;
+}
+</style>
+</head>
+<body>
+<div id="tattes-login">
+	<header><h1>TatteS! ログイン</h1></header>
+	<h2>事前に必要な準備</h2>
+	<ul>
+		<li><a href="https://character-sheets.appspot.com/stellar/" target="_blank">キャラクターシート倉庫</a>でキャラクターシートを作成する</li>
+		<li>Discord のトークンを取得しておく</li>
+		<li>Discord にメインチャンネル、ブーケ用チャンネル、雑談用チャンネルを用意しておく</li>
+	</ul>
+	<p>キャラクターシートの URL<br/>　<input type="text" v-model="sheet" /></p>
+	<p>トークン<br/>　<input type="text" v-model="token" /><br/>
+	<span class="explanation"><a target="_blank" href="https://shunshun94.github.io/shared/sample/discordBot_101">Discord の Bot を作ろう！</a>記載の手順でサーバに登録した Bot のトークンまたは、</span><br/>
+	<span class="explanation"><a target="_blank" href="https://shunshun94.github.io/shared/sample/discordAccountToken">Discord の自分のアカウントの Token を取得しよう！</a>記載の手順で取得したアカウントのトークンを入力してください</span></p>
+	<p><button @click="getRooms">トークンを使って部屋一覧を生成する</button></p>
+	<p v-show="channels.length">セッションで使う部屋のID<br/>　<room-list v-on:update="updateMain" v-bind:channels="channels"></room-list></p>
+	<p v-show="channels.length">ブーケを投げるのに使う部屋のID<br/>　<room-list v-on:update="updateBouquet" v-bind:channels="channels"></room-list></p>
+	<p v-show="channels.length">雑談に使う部屋のID<br/>　<room-list v-on:update="updateOther" v-bind:channels="channels"></room-list></p>
+	<p v-show="isCompleted"><a :href="executableUrl">ログインする</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://shunshun94.github.io/shared/external/discord.io/index.js"></script>
+<script src="https://shunshun94.github.io/shared/other/io/github/shunshun94/trpg/clientSpec.js"></script>
+<script src="https://shunshun94.github.io/shared/other/io/github/shunshun94/trpg/discord/client.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/alertify.min.js"></script>
+<script>
+Vue.component('option-room', {
+	props: ['roomInfo'],
+	template: `<option :value="roomInfo.id">{{roomInfo.name}}</option>`
+});
+
+Vue.component('room-list', {
+	props: ['channels'],
+	data: function(){
+		return {channel: ''}
+	},
+	template: `<select @change="update" v-model="channel">
+	<option-room v-for="roomInfo in channels" :key="roomInfo.id" v-bind:roomInfo="roomInfo"></option-room>
+	</select>`,
+	methods: {
+		update: function() {
+			this.$emit('update', this.channel);
+		}
+	}
+});
+
+const vueObject = new Vue({
+	el: '#tattes-login',
+	data: {
+		token: '',
+		sheet: '',
+		mainChannel: '',
+		bouquetChannel: '',
+		otherChannel: '',
+		channels: [],
+		diceBot: ''
+	},
+	computed: {
+		isCompleted: function() {
+			return (this.token && this.sheet && this.mainChannel && this.bouquetChannel && this.otherChannel);
+		},
+		executableUrl: function() {
+			return `./tattes.html?sheet=${this.sheet}&token=${this.token}&room=${this.mainChannel},${this.bouquetChannel},${this.otherChannel}`;
+		}
+	},
+	methods: {
+		updateMain: function(channel) {
+			this.mainChannel = channel;
+		},
+		updateBouquet: function(channel) {
+			this.bouquetChannel = channel;
+		},
+		updateOther: function(channel) {
+			this.otherChannel = channel;
+		},
+		getRooms: function() { 
+			const discordClient = new io.github.shunshun94.trpg.discord.Server(this.token);
+			alertify.message('部屋一覧を取得中です (5秒強かかります)');
+			setTimeout(()=>{
+				discordClient.getRoomList().then(
+					(list)=>{
+						this.channels = list.playRoomStates.map((room)=>{
+							return {
+								id: room.id,
+								name: room.roomName
+							};
+						});
+					},
+					(error)=>{
+						alertify.error('部屋一覧の取得に失敗しました。Token が間違っているか、通信に失敗したと思われます。Token が正しいようであればリトライしてみてください');
+					});
+			}, 5000);
+		}
+	}
+});
+</script>
+
+<footer>
+<a target="_blank" href="https://twitter.com/Shunshun94">ツール作者連絡先 (Twitter)</a> | <a target="_blank" href="https://shunshun94.github.io/StellarKnightsTools/">GitHub</a> | <a target="_blank" href="http://amzn.asia/8mNqdKy">ひよこのほしい物りすと</a><br/>
+本ツールは「どらこにあん」及び「株式会社KADOKAWA」が権利を有する『銀剣のステラナイツ』の二次創作です。<br/>
+(C)Fuyu Takizato / Draconian<br/>
+(C)KADOKAWA<br/>
+<a href="https://fujimi-trpg-online.jp/info/stellar_ug.html" target="_blank">【銀剣のステラナイツ】二次創作ガイドライン</a>
+</footer>
+
+</body>
+</html>
