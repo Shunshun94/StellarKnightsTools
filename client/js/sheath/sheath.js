@@ -17,11 +17,8 @@ Vue.component('tattes-sheath', {
 			></tattes-character-status>
 		</section>`,
 		methods: {
-			sendChat: function(message) {
-				const data = {
-						name: this.sheath.name,
-						message: message
-				};
+			sendChat: function(data) {
+				data.name = this.sheath.name;
 				this.$emit(`${Tattes.Sheath.CONSTS.ID}-events-sendchat`, data);
 			}
 		}

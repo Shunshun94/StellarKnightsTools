@@ -17,11 +17,8 @@ Vue.component('tattes-bringer', {
 			></tattes-character-status>
 		</section>`,
 		methods: {
-			sendChat: function(message) {
-				const data = {
-						name: this.bringer.name,
-						message: message
-				};
+			sendChat: function(data) {
+				data.name = this.bringer.name;
 				this.$emit(`${Tattes.Bringer.CONSTS.ID}-events-sendchat`, data);
 			}
 		}

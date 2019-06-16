@@ -1,7 +1,7 @@
 const initTattes = async (params) =>{
 	const characterSheetClient = new io.github.shunshun94.trpg.characterSheetsMasashige.client();
 
-	const characterId = params.url.split('=')[1];
+	const characterId = params.sheet.split('=')[1];
 	const characterData = await characterSheetClient.sendRequest(Tattes.CONSTS.SYSTEM_CODE, characterId);
 
 	const partnerId = characterData.partner.bringer.url.split('=')[1];
@@ -65,6 +65,3 @@ Tattes.FUNCS.getQueries = () => {
 	}
 	return result;
 };
-
-
-// https://character-sheets.appspot.com/stellar/image?key=ahVzfmNoYXJhY3Rlci1zaGVldHMtbXByFwsSDUNoYXJhY3RlckRhdGEY1fjLpwIM&1560382859483

@@ -1,0 +1,37 @@
+@CHARSET "UTF-8";
+#tattes-audience {
+	position:relative;
+}
+
+#tattes-audience-bouquetchat {
+	border:3px black solid;
+	font-size:80%;
+	width:600px;
+	height:600px;
+	display:inline-block;
+}
+
+#tattes-audience-bouquetconsole {
+	border:3px black solid;
+	font-size:80%;
+	width:300px;
+	height:600px;
+	position:absolute;
+	top:28px;
+	left:600px;
+	display:inline-block;
+}
+
+#tattes-audience-bouquetconsole-shortcuts > button {
+	display:block;
+	text-align:left;
+	width:100%;
+	padding:4px;
+}
+
+#tattes-audience-bouquetconsole-bouquetCount-counter {
+	font-size:200%;
+	width:60px;
+	left:8px;
+	position:relative;
+}

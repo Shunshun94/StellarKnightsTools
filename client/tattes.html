@@ -2,6 +2,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="css/tattes.css" />
+<link rel="stylesheet" href="css/audience.css" />
 <link rel="stylesheet" href="css/bringer.css" />
 <link rel="stylesheet" href="css/sheath.css" />
 <link rel="stylesheet" href="css/chat.css" />
@@ -28,7 +29,11 @@
 				v-bind:chat="chat"
 				v-bind:sheath="sheath"
 				v-on:tattes-sheath-events-sendchat="sendChat"></tattes-sheath>
-			<section id="tattes-audience"></section>
+			<tattes-audience
+				v-show="activeTab===2"
+				v-bind:chat="chat"
+				v-bind:plname="bringer.player"
+				v-on:tattes-audience-events-sendchat="sendChat"></tattes-audience>
 		</div>
 
 	</div>
@@ -49,6 +54,7 @@
 	<script src="./js/app.js"></script>
 	<script src="./js/chat/commonChat.js"></script>
 	<script src="./js/character/status.js"></script>
+	<script src="./js/audience/audience.js"></script>
 	<script src="./js/bringer/bringer.js"></script>
 	<script src="./js/sheath/sheath.js"></script>
 	<script src="./js/init.js"></script>
