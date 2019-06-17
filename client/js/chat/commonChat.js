@@ -37,10 +37,11 @@ Vue.component('common-chat', {
 				this.text = `「${this.text}」` 
 			} else {
 				this.text = '「」';
+				// 少し処理を遅延させないとカーソルの移動が DOM の再描画で上書きされてしまう
+				// 描画終わりそうな短い時間待った上でカーソルを動かす
 				setTimeout(()=>{
 					this.$el.querySelector('textarea').setSelectionRange(1,1);
 				}, 200);
-				
 			}
 		},
 		submit: function(e) {
