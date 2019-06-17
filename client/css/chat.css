@@ -38,11 +38,11 @@
 }
 
 .tattes-chat-commonchat-input-text-1 {
-	background-color:mistyrose;
+	background-color:#eeffee;
 }
 
 .tattes-chat-commonchat-input-text-2 {
-	background-color:lavender;
+	background-color:#f0f0f0;
 }
 
 .tattes-chat-commonchat-input-explanation {
@@ -65,23 +65,20 @@
 	padding-left:4px;
 }
 
-#tattes-audience-bouquetchat .tattes-chat-commonchat-logs-post-0:nth-child(even),
-.tattes-chat-commonchat .tattes-chat-commonchat-logs-post-0:nth-child(even) {
-	background-color:#f4fff9;
+.tattes-chat-commonchat-logs-post-0:nth-child(even){
+	background-color:#fef4f4;
 }
 
-#tattes-audience-bouquetchat .tattes-chat-commonchat-logs-post-1 {
-	background-color:mistyrose;
+.tattes-chat-commonchat-logs-post-1 {
+	background-color:#ccffcc;
 }
 
-#tattes-audience-bouquetchat .tattes-chat-commonchat-logs-post-1:nth-child(even) {
-	background-color:peachpuff;
+.tattes-chat-commonchat-logs-post-2 {
+	background-color:#e0e0e0;
 }
 
-#tattes-audience-bouquetchat .tattes-chat-commonchat-logs-post-2,
-.tattes-chat-commonchat .tattes-chat-commonchat-logs-post-1,
-.tattes-chat-commonchat .tattes-chat-commonchat-logs-post-2 {
-	background-color:lavender;
+.tattes-chat-commonchat-logs-post-1
+.tattes-chat-commonchat-logs-post-2 {
 	font-size:80%;
 	padding-left:12px;
 }
