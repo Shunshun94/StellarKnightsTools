@@ -10,17 +10,20 @@ Tattes.Audience = {};
 Tattes.Audience.CONSTS = {
 		ID: 'tattes-audience',
 		TITLE: '観客',
+		HOW_TO_POST: 'SHIFT + Enter で改行、Enter で発言',
 		SHORTCUTS: 'ショートカットボタン',
 		THROWN_BOUQUET_COUNT: '投げたブーケの数',
 		BUTTONS: {
-			BOUQUET: 'ブーケを投げる準備をする',
+			BOUQUET: 'ブーケを投げる準備をする (CTRL+B)',
 			TATTES: '「はぁ、尊い」とだけ言ってブーケを投げる',
 			EMOTIONAL: '「エモい……」とだけ言ってブーケを投げる',
+			LOVEIT:'「これ、しゅき」とだけ言ってブーケを投げる'
 		},
 		TEXTS: {
 			BOUQUET: `＜${Tattes.CONSTS.BOUQUET}＞ `,
 			TATTES: `＜${Tattes.CONSTS.BOUQUET}＞ はぁ、尊い……`,
-			EMOTIONAL: `＜${Tattes.CONSTS.BOUQUET}＞ エモい……`
+			EMOTIONAL: `＜${Tattes.CONSTS.BOUQUET}＞ エモい……`,
+			LOVEIT:`＜${Tattes.CONSTS.BOUQUET}＞ これ、しゅき……`
 		}
 };
 
@@ -54,7 +57,7 @@ Tattes.Chat.CommonChat.CONSTS = {
 		ID: 'tattes-chat-commonchat',
 		UNEXPECTED: ['[]', '""', `""`, '「」', '()', '（）', '<>', '＜＞', ''],
 		IS_IT_OK: '誤送信な気がします。本当に送りますか?',
-		HOW_TO_POST: 'SHIFT + Enter で改行、Enter で発言',
+		HOW_TO_POST: 'SHIFT + Enter で改行、Enter で発言。CTRL + [ で 「」 挿入',
 		INPUTAREA: '発言したい内容を入力',
 		CHANNELS: {
 			0: '',

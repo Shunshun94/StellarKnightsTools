@@ -15,7 +15,10 @@ Vue.component('common-chat', {
 				</select>
 				<textarea 
 					placeholder="${Tattes.Chat.CommonChat.CONSTS.INPUTAREA}"
-					v-model="text"　@keyup.enter="submit" :class="inputTextClass"></textarea>
+					v-model="text"
+					@keyup.enter="submit"
+					@keyup.ctrl.219="insertParentheses"
+					:class="inputTextClass"></textarea>
 				<p class="${Tattes.Chat.CommonChat.CONSTS.ID}-input-explanation">${Tattes.Chat.CommonChat.CONSTS.HOW_TO_POST}</p>
 			</div>
 			<div class="${Tattes.Chat.CommonChat.CONSTS.ID}-logs">
@@ -29,11 +32,22 @@ Vue.component('common-chat', {
 		}
 	},
 	methods: {
+		insertParentheses: function(e) {
+			if(this.text.trim().length) {
+				this.text = `「${this.text}」` 
+			} else {
+				this.text = '「」';
+				// 少し処理を遅延させないとカーソルの移動が DOM の再描画で上書きされてしまう
+				// 描画終わりそうな短い時間待った上でカーソルを動かす
+				setTimeout(()=>{
+					this.$el.querySelector('textarea').setSelectionRange(1,1);
+				}, 200);
+			}
+		},
 		submit: function(e) {
 			if(e.shiftKey) {
 				return;
 			}
-			e.preventDefault();
 			const text = this.text.trim();
 			if(Tattes.Chat.CommonChat.CONSTS.UNEXPECTED.includes(text) || /^\s+$/.test(text)) {
 				if(! window.confirm(Tattes.Chat.CommonChat.CONSTS.IS_IT_OK)) {

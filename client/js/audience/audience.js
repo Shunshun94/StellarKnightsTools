@@ -18,8 +18,11 @@ Vue.component('tattes-audience', {
 					</select>
 					<textarea 
 						placeholder="${Tattes.Chat.CommonChat.CONSTS.INPUTAREA}"
-						v-model="text"　@keyup.enter="submit" :class="inputTextClass"></textarea>
-					<p class="${Tattes.Chat.CommonChat.CONSTS.ID}-input-explanation">${Tattes.Chat.CommonChat.CONSTS.HOW_TO_POST}</p>
+						v-model="text"
+						@keyup.enter="submit"
+						@keyup.ctrl.66="insertText('${Tattes.Audience.CONSTS.TEXTS.BOUQUET}')"
+						:class="inputTextClass"></textarea>
+					<p class="${Tattes.Chat.CommonChat.CONSTS.ID}-input-explanation">${Tattes.Audience.CONSTS.HOW_TO_POST}</p>
 				</div>
 				<div class="${Tattes.Chat.CommonChat.CONSTS.ID}-logs">
 					<common-chat-post v-for="post in chat.log" :key="post[0]" v-bind:post="post"></common-chat-post>
@@ -38,6 +41,9 @@ Vue.component('tattes-audience', {
 					<button
 						@click="forceSubmit('${Tattes.Audience.CONSTS.TEXTS.EMOTIONAL}')"
 					>${Tattes.Audience.CONSTS.BUTTONS.EMOTIONAL}</button>
+					<button
+						@click="forceSubmit('${Tattes.Audience.CONSTS.TEXTS.LOVEIT}')"
+					>${Tattes.Audience.CONSTS.BUTTONS.LOVEIT}</button>
 				</div>
 				<hr/>
 				<div id="${Tattes.Audience.CONSTS.ID}-bouquetconsole-bouquetCount">
