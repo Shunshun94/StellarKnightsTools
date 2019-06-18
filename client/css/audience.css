@@ -29,9 +29,17 @@
 	padding:4px;
 }
 
-#tattes-audience-bouquetconsole-bouquetCount-counter {
+#tattes-audience-bouquetconsole-bouquetCount-counter,
+#tattes-audience-bouquetconsole-bouquetCount-counter-total {
 	font-size:200%;
 	width:60px;
 	left:8px;
 	position:relative;
+}
+
+#tattes-audience-bouquetconsole-clearing {
+	height:32px;
+	position:relative;
+	left:6px;
+	top:-5px;
 }
