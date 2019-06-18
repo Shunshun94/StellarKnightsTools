@@ -29,7 +29,9 @@ Tattes.Audience.CONSTS = {
 
 Tattes.Bringer = {};
 Tattes.Bringer.CONSTS = {
-		ID: 'tattes-bringer'
+		ID: 'tattes-bringer',
+		BOUQUET_ON: 'ブーケを表示する',
+		BOUQUET_OFF: 'ブーケを表示しない'
 };
 
 Tattes.Sheath = {};

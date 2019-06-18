@@ -22,7 +22,7 @@ Vue.component('common-chat', {
 				<p class="${Tattes.Chat.CommonChat.CONSTS.ID}-input-explanation">${Tattes.Chat.CommonChat.CONSTS.HOW_TO_POST}</p>
 			</div>
 			<div class="${Tattes.Chat.CommonChat.CONSTS.ID}-logs">
-				<common-chat-post v-for="post in chat.log.filter((p)=>{return p[1].channel !== 1})" :key="post[0]" v-bind:post="post"></common-chat-post>
+				<common-chat-post v-for="post in chat.log" :key="post[0]" v-bind:post="post"></common-chat-post>
 			</div>
 		</div>
 	`,
