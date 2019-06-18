@@ -22,7 +22,7 @@ Vue.component('common-chat', {
 				<p class="${Tattes.Chat.CommonChat.CONSTS.ID}-input-explanation">${Tattes.Chat.CommonChat.CONSTS.HOW_TO_POST}</p>
 			</div>
 			<div class="${Tattes.Chat.CommonChat.CONSTS.ID}-logs">
-				<common-chat-post v-for="post in chat.log.filter((p)=>{return p[1].channel !== 1})" :key="post[0]" v-bind:post="post"></common-chat-post>
+				<common-chat-post v-on:${Tattes.Chat.CommonChat.CONSTS.ID}-post-events-share="shareText" v-for="post in chat.log" :key="post[0]" v-bind:post="post"></common-chat-post>
 			</div>
 		</div>
 	`,
@@ -32,6 +32,9 @@ Vue.component('common-chat', {
 		}
 	},
 	methods: {
+		shareText: function(e) {
+			this.$emit(`${Tattes.Chat.CommonChat.CONSTS.ID}-events-share`, e);
+		},
 		insertParentheses: function(e) {
 			if(this.text.trim().length) {
 				this.text = `「${this.text}」` 
@@ -67,7 +70,7 @@ Vue.component('common-chat', {
 Vue.component('common-chat-post', {
 	props: ['post'],
 	template: `
-		<div :class="postClass">
+		<div @click="shareText" :class="postClass">
 			<span class="${Tattes.Chat.CommonChat.CONSTS.ID}-logs-post-info">
 				<span class="${Tattes.Chat.CommonChat.CONSTS.ID}-logs-post-info-name">{{name}}</span>
 				<span class="${Tattes.Chat.CommonChat.CONSTS.ID}-logs-post-info-channel">{{channel}}</span>
@@ -75,9 +78,19 @@ Vue.component('common-chat-post', {
 			<pre class="${Tattes.Chat.CommonChat.CONSTS.ID}-logs-post-message">{{message}}</pre>
 		</div>
 	`,
+	methods: {
+		shareText: function() {
+			const data = {
+					message: this.message,
+					channel: this.post[1].channel,
+					name: this.name
+			};
+			this.$emit(`${Tattes.Chat.CommonChat.CONSTS.ID}-post-events-share`, data);
+		}
+	},
 	computed: {
 		postClass: function() {
-			return `${Tattes.Chat.CommonChat.CONSTS.ID}-logs-post-${this.post[1].channel}`
+			return `${Tattes.Chat.CommonChat.CONSTS.ID}-logs-post ${Tattes.Chat.CommonChat.CONSTS.ID}-logs-post-${this.post[1].channel}`
 		},
 		channel: function() {
 			return Tattes.Chat.CommonChat.CONSTS.CHANNELS[this.post[1].channel]

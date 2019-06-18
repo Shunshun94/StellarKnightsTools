@@ -3,7 +3,8 @@ Tattes.CONSTS = {
 		SYSTEM_CODE: 'stellar',
 		HOPE: '希望',
 		DESPAIR: '絶望',
-		BOUQUET: 'ブーケ'
+		BOUQUET: 'ブーケ',
+		TOTAL: '合計'
 };
 
 Tattes.Audience = {};
@@ -12,7 +13,10 @@ Tattes.Audience.CONSTS = {
 		TITLE: '観客',
 		HOW_TO_POST: 'SHIFT + Enter で改行、Enter で発言',
 		SHORTCUTS: 'ショートカットボタン',
-		THROWN_BOUQUET_COUNT: '投げたブーケの数',
+		THROWN_BOUQUET_COUNT: '投げたブーケの数 (このシーン中)',
+		THROWN_BOUQUET_COUNT_TOTAL: '投げたブーケの数 (トータル)',
+		BOUQUET_THROW: 'ブーケ譲渡',
+		CLEARING: '清算する',
 		BUTTONS: {
 			BOUQUET: 'ブーケを投げる準備をする (CTRL+B)',
 			TATTES: '「はぁ、尊い」とだけ言ってブーケを投げる',
@@ -29,7 +33,12 @@ Tattes.Audience.CONSTS = {
 
 Tattes.Bringer = {};
 Tattes.Bringer.CONSTS = {
-		ID: 'tattes-bringer'
+		ID: 'tattes-bringer',
+		BOUQUET_ON: 'ブーケを表示する',
+		BOUQUET_OFF: 'ブーケを表示しない',
+		BOUQUET: 'ブーケ所持数',
+		BOUQUET_PARSER: /ブーケ譲渡(\d+)/,
+		BOUQUET_HOW_TO_GET: '「ブーケ譲渡」と書かれた発言をクリックするとブーケを受け取れます'
 };
 
 Tattes.Sheath = {};
