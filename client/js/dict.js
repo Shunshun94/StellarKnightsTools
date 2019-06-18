@@ -15,6 +15,7 @@ Tattes.Audience.CONSTS = {
 		SHORTCUTS: 'ショートカットボタン',
 		THROWN_BOUQUET_COUNT: '投げたブーケの数 (このシーン中)',
 		THROWN_BOUQUET_COUNT_TOTAL: '投げたブーケの数 (トータル)',
+		BOUQUET_THROW: 'ブーケ譲渡',
 		CLEARING: '清算する',
 		BUTTONS: {
 			BOUQUET: 'ブーケを投げる準備をする (CTRL+B)',
@@ -34,7 +35,9 @@ Tattes.Bringer = {};
 Tattes.Bringer.CONSTS = {
 		ID: 'tattes-bringer',
 		BOUQUET_ON: 'ブーケを表示する',
-		BOUQUET_OFF: 'ブーケを表示しない'
+		BOUQUET_OFF: 'ブーケを表示しない',
+		BOUQUET: 'ブーケ所持数',
+		BOUQUET_PARSER: /ブーケ譲渡(\d+)/
 };
 
 Tattes.Sheath = {};

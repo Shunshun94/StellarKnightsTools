@@ -73,7 +73,7 @@ Vue.component('tattes-audience', {
 		},
 		clearBouquet: function() {
 			const data = {
-					message: `${Tattes.CONSTS.BOUQUET}${this.thrownBouquet} (${Tattes.CONSTS.TOTAL}${Number(this.thrownBouquet)+Number(this.thrownBouquetTotal)})`,
+					message: `${Tattes.Audience.CONSTS.BOUQUET_THROW}${this.thrownBouquet} (${Tattes.CONSTS.TOTAL}${Number(this.thrownBouquet)+Number(this.thrownBouquetTotal)})`,
 					channel: 0,
 					name: this.plname
 			};

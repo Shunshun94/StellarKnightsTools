@@ -17,6 +17,7 @@ const initTattes = async (params) =>{
 	data.bringer.isBringer = true;
 	data.bringer.skills = characterData.skills;
 	data.bringer.status = characterData.status;
+	data.bringer.bouquet = 0;
 	data.sheath.id = characterId;
 	data.sheath.hopedespair.choice = Tattes.FUNCS.switchHope(partnerData.base.hopedespair);
 	data.sheath.isBringer = false;

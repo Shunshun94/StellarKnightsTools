@@ -16,3 +16,10 @@
 #tattes-bringer-config > button {
 	width:100%;
 }
+
+#tattes-bringer-config-bouquet-count {
+	font-size:200%;
+	width:60px;
+	left:8px;
+	position:relative;
+}
