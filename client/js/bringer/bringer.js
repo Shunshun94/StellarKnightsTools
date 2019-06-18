@@ -40,6 +40,7 @@ Vue.component('tattes-bringer', {
 				<hr/>
 				<h3>${Tattes.Bringer.CONSTS.BOUQUET}</h3>
 				<input id="${Tattes.Bringer.CONSTS.ID}-config-bouquet-count" v-model="bringer.bouquet" type="number" />
+				<p id="${Tattes.Bringer.CONSTS.ID}-config-bouquet-explanation">${Tattes.Bringer.CONSTS.BOUQUET_HOW_TO_GET}</p>
 			</div>
 		</section>`,
 		methods: {

@@ -37,7 +37,8 @@ Tattes.Bringer.CONSTS = {
 		BOUQUET_ON: 'ブーケを表示する',
 		BOUQUET_OFF: 'ブーケを表示しない',
 		BOUQUET: 'ブーケ所持数',
-		BOUQUET_PARSER: /ブーケ譲渡(\d+)/
+		BOUQUET_PARSER: /ブーケ譲渡(\d+)/,
+		BOUQUET_HOW_TO_GET: '「ブーケ譲渡」と書かれた発言をクリックするとブーケを受け取れます'
 };
 
 Tattes.Sheath = {};
