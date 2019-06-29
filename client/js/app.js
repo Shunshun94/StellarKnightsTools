@@ -16,6 +16,10 @@ const initTattes = async (params) =>{
 	data.bringer.id = characterId;
 	data.bringer.isBringer = true;
 	data.bringer.skills = characterData.skills;
+	data.bringer.skills = data.bringer.skills.map((v, i)=>{
+		v.id = i;
+		return v;
+	});
 	data.bringer.status = characterData.status;
 	data.bringer.bouquet = 0;
 	data.sheath.id = characterId;

@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="css/bringer.css" />
 <link rel="stylesheet" href="css/sheath.css" />
 <link rel="stylesheet" href="css/chat.css" />
+<link rel="stylesheet" href="css/battle.css" />
 <link rel="stylesheet" href="css/character-status.css" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/alertify.min.css"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/default.min.css"/>
@@ -17,7 +18,7 @@
 	<div id="tattes">
 		
 		<nav id="tattes-menu">
-			<span v-bind:class="{ active: activeTab===0 }" class="tattes-menu-tab" v-on:click="changeTab(0)">ブリンガー</span><span v-bind:class="{ active: activeTab===1 }" class="tattes-menu-tab" v-on:click="changeTab(1)">シース</span><span v-bind:class="{ active: activeTab===2 }" class="tattes-menu-tab" v-on:click="changeTab(2)">観客</span>
+			<span v-bind:class="{ active: activeTab===0 }" class="tattes-menu-tab" v-on:click="changeTab(0)">ブリンガー</span><span v-bind:class="{ active: activeTab===1 }" class="tattes-menu-tab" v-on:click="changeTab(1)">シース</span><span v-bind:class="{ active: activeTab===2 }" class="tattes-menu-tab" v-on:click="changeTab(2)">観客</span><span v-bind:class="{ active: activeTab===3 }" class="tattes-menu-tab" v-on:click="changeTab(3)">バトル</span>
 		</nav>
 		<div id="tattes-contents">
 			<tattes-bringer
@@ -36,6 +37,11 @@
 				v-bind:chat="chat"
 				v-bind:plname="bringer.player"
 				v-on:tattes-audience-events-sendchat="sendChat"></tattes-audience>
+			<tattes-battle
+				v-show="activeTab===3"
+				v-bind:chat="chat"
+				v-bind:bringer="bringer"
+				v-on:tattes-battle-events-sendchat="sendChat"></tattes-battle>
 		</div>
 
 	</div>
@@ -60,6 +66,9 @@
 	<script src="./js/audience/audience.js"></script>
 	<script src="./js/bringer/bringer.js"></script>
 	<script src="./js/sheath/sheath.js"></script>
+	<script src="./js/battle/chargeDice.js"></script>
+	<script src="./js/battle/skill.js"></script>
+	<script src="./js/battle/battle.js"></script>
 	<script src="./js/init.js"></script>
 </body>
 </html>

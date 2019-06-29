@@ -31,6 +31,28 @@ Tattes.Audience.CONSTS = {
 		}
 };
 
+Tattes.Battle = {};
+Tattes.Battle.CONSTS = {
+		ID: 'tattes-battle',
+		INFO: {
+			CHARGE: 'チャージ',
+			DEFENSE: '防御力',
+			HP: '耐久力',
+			BOUQUET: 'ブーケ'
+		},
+		ACT: {
+			CHARGE: 'チャージ',
+			SKILLS: 'スキル',
+			MOVE: '移動',
+			ATTACK: 'アタック判定',
+			ROUNDS: '現在のラウンド数',
+
+			CHARGING: 'チャージ判定のダイスを振る',
+			CHARGING_RESULT: 'チャージ判定 結果',
+			CHARGING_APPLY: '反映'
+		}
+};
+
 Tattes.Bringer = {};
 Tattes.Bringer.CONSTS = {
 		ID: 'tattes-bringer',
@@ -81,4 +103,14 @@ Tattes.Chat.CommonChat.REGEXP = [
 	/^\*?\*?([^:：\*\n]+)\*?\*?[:：]?\s*(「[^」]*」)/,
 	/^\*?\*?([^:：\*\n]+)\*?\*?[:：]([^「]*)/
 ];
+
+Tattes.ChargeDice = {};
+Tattes.ChargeDice.CONSTS = {
+		ID: 'tattes-battle-chargeDice'
+};
+
+Tattes.Skill = {};
+Tattes.Skill.CONSTS = {
+		ID: 'tattes-skill'
+};
 
