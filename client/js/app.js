@@ -18,6 +18,9 @@ const initTattes = async (params) =>{
 	data.bringer.skills = characterData.skills;
 	data.bringer.skills = data.bringer.skills.map((v, i)=>{
 		v.id = i;
+		v.effect = v.effect.replace(/[０-９]/g, (s)=>{
+		    return String.fromCharCode(s.charCodeAt(0) - 65248);
+		});
 		return v;
 	});
 	data.bringer.status = characterData.status;

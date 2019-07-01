@@ -72,12 +72,7 @@
 
 #tattes-battle-act-rounds {
 	position:absolute;
-	left:200px;
-	top:-4px;
-	padding:8px;
-	width:534px;
-	border-left:1px black solid;
-	border-bottom:1px black solid;
+	left: 368px;
 }
 
 #tattes-battle-act input {
@@ -96,7 +91,8 @@
 	height:48px;
 }
 
-#tattes-battle-act-charge-diceList > button {
+#tattes-battle-act-charge-diceList > button,
+#tattes-battle-act-attack > button {
 	padding:7px;
 	position:relative;
 	top:-5px;
@@ -145,3 +141,32 @@
 	overflow:scroll;
 }
 
+#tattes-battle-act-bouquet {
+	position:absolute;
+	left: 368px;
+}
+
+#tattes-battle-act-bouquet > p {
+	position: relative;
+	left:8px;
+}
+#tattes-battle-act-move{
+	position:relative;
+}
+#tattes-battle-act-move-menu {
+	position: relative;
+	left:8px;
+	background-color:white;
+	width:220px;
+	height:220px;
+}
+
+.tattes-battle-act-move-menu-place:hover {
+	background-color:black;
+}
+
+#tattes-battle-act-attack {
+	position:absolute;
+	left: 368px;
+	top: 460px;
+}

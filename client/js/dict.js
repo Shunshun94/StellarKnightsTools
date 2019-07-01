@@ -45,11 +45,18 @@ Tattes.Battle.CONSTS = {
 			SKILLS: 'スキル',
 			MOVE: '移動',
 			ATTACK: 'アタック判定',
+			BOUQUET: 'ブーケ使用',
 			ROUNDS: '現在のラウンド数',
 
 			CHARGING: 'チャージ判定のダイスを振る',
 			CHARGING_RESULT: 'チャージ判定 結果',
-			CHARGING_APPLY: '反映'
+			CHARGING_APPLY: '反映',
+
+			BOUQUET_COUNT: '枚',
+			BOUQUET_STOCK: '残',
+
+			ATTACKING: 'アタック判定のダイスを振る',
+			ATTACKING_DICE: 'ダイス'
 		}
 };
 
@@ -113,4 +120,6 @@ Tattes.Skill = {};
 Tattes.Skill.CONSTS = {
 		ID: 'tattes-skill'
 };
-
+Tattes.Skill.REGEXP = {
+		ATTACK_DICE: /[アAＡ]タ?ッ?ク?判?定?[:：](\d+)/
+};

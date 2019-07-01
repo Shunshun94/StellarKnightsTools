@@ -4,7 +4,8 @@ Vue.component('tattes-battle', {
 		return {
 			rounds: 1,
 			stacked: [0,0,0,0,0,0],
-			chargeResult: []
+			chargeResult: [],
+			attackDices: 1
 		};
 	},
 	template: `<section id="${Tattes.Battle.CONSTS.ID}">
@@ -63,11 +64,104 @@ Vue.component('tattes-battle', {
 					 :key="skill.id"
 					 :skill="skill"
 					 :stack="stacked[skill.id]"
+					 @${Tattes.Skill.CONSTS.ID}-events-sendInfo="onSkillClick"
+					 @${Tattes.Skill.CONSTS.ID}-events-updateStack="onUpdateStack"
 				></tattes-skill>
 			</div>
-			<h3>${Tattes.Battle.CONSTS.ACT.MOVE}</h3>
-			<h3>${Tattes.Battle.CONSTS.ACT.ATTACK}</h3>
+			<div id="${Tattes.Battle.CONSTS.ID}-act-bouquet">
+				<h3>${Tattes.Battle.CONSTS.ACT.BOUQUET}</h3>
+				<p>
+					<button　@click="useBouquets(3, '3')">3</button>
+					<button　@click="useBouquets(6, '3×2')">3×2</button>
+					<button　@click="useBouquets(9, '3×3')">3×3</button>
+					<button　@click="useBouquets(12, '3×4')">3×4</button>
+					<button　@click="useBouquets(15, '3×5')">3×5</button>
+				</p>
+				<p>
+					<button　@click="useBouquets(4, '4')">4</button>
+					<button　@click="useBouquets(8, '4×2')">4×2</button>
+					<button　@click="useBouquets(12, '4×3')">4×3</button>
+				</p>
+				<p>
+					<button　@click="useBouquets(5, '5')">5</button>
+				</p>
+			</div>
+			
+			<div id="${Tattes.Battle.CONSTS.ID}-act-move">
+				<h3>${Tattes.Battle.CONSTS.ACT.MOVE}</h3>
+				<div id="${Tattes.Battle.CONSTS.ID}-act-move-menu">
+					<svg width="220" height="220" viewBox="-110 -110 220 220" xmlns="http://www.w3.org/2000/svg">
+						<g font-size="30">
+							<text x="-50" y="-50">１</text>
+							<text x="20" y="-50">２</text>
+							<text x="50" y="10">３</text>
+							<text x="20" y="70">４</text>
+							<text x="-50" y="70">５</text>
+							<text x="-85" y="10">６</text>
+						</g>
+						<path
+							@click="onMoveClick(1)"
+							id="${Tattes.Battle.CONSTS.ID}-act-move-menu-1"
+							class="${Tattes.Battle.CONSTS.ID}-act-move-menu-place"
+							d="M 0,0 L -87,-50 a 100 100 210 0 1 87,-50 z"
+							fill="red"
+							fill-opacity="0.2"
+							stroke="black"
+						/>
+						<path
+							@click="onMoveClick(2)"
+							id="${Tattes.Battle.CONSTS.ID}-act-move-menu-2"
+							class="${Tattes.Battle.CONSTS.ID}-act-move-menu-place"
+							d="M 0,0 L 0,-100 a 100 100 -30 0 1 87 50 z"
+							fill="orange"
+							fill-opacity="0.2"
+							stroke="black"
+						/>
+						<path
+							@click="onMoveClick(3)"
+							id="${Tattes.Battle.CONSTS.ID}-act-move-menu-3"
+							class="${Tattes.Battle.CONSTS.ID}-act-move-menu-place"
+							d="M 0,0 L 87,-50 a 100 100 -30 0 1 0 100 z"
+							fill="yellow"
+							fill-opacity="0.2"
+							stroke="black"
+						/>
+						<path
+							@click="onMoveClick(4)"
+							id="${Tattes.Battle.CONSTS.ID}-act-move-menu-4"
+							class="${Tattes.Battle.CONSTS.ID}-act-move-menu-place"
+							d="M 0,0 L 87,50 a 100 100 30 0 1 -87,50 z"
+							fill="green"
+							fill-opacity="0.2"
+							stroke="black"
+						/>
+						<path
+							@click="onMoveClick(5)"
+							id="${Tattes.Battle.CONSTS.ID}-act-move-menu-5"
+							class="${Tattes.Battle.CONSTS.ID}-act-move-menu-place"
+							d="M 0,0 L 0,100 a 100 100 90 0 1 -87,-50 z"
+							fill="deepskyblue"
+							fill-opacity="0.2"
+							stroke="black"
+						/>
+						<path
+							@click="onMoveClick(6)"
+							id="${Tattes.Battle.CONSTS.ID}-act-move-menu-6"
+							class="${Tattes.Battle.CONSTS.ID}-act-move-menu-place"
+							d="M 0,0 L -87,50 a 100 100 -30 0 1 0 -100 z"
+							fill="blue"
+							fill-opacity="0.2"
+							stroke="black"
+						/>
 
+					</svg>			
+				</div>
+			</div>
+			<div id="${Tattes.Battle.CONSTS.ID}-act-attack">
+				<h3>${Tattes.Battle.CONSTS.ACT.ATTACK}</h3>
+				<input v-model="attackDices" type="number" min="1" />
+				<button @click="attack">${Tattes.Battle.CONSTS.ACT.ATTACKING}</button>
+			</div>
 		</div>
 	</section>`,
 	computed: {
@@ -76,10 +170,45 @@ Vue.component('tattes-battle', {
 		}
 	},
 	methods: {
+		onMoveClick: function(num) {
+			console.log(num)
+		},
+		onSkillClick: function(data) {
+			if(data.attack) {
+				this.attackDices = data.attack;
+			}
+		},
+		onUpdateStack: function(data) {
+			console.log(this.stacked);
+			this.stacked[data.index] = Number(data.value);
+			console.log(this.stacked)
+		},
+		attack: function() {
+			const diceResult = this.diceRoll(this.attackDices);
+			let str = `${Tattes.Battle.CONSTS.ACT.ATTACK}: ${this.attackDices}${Tattes.Battle.CONSTS.ACT.ATTACKING_DICE}\n`;
+			str += `[ ${this.diceToList(diceResult).join(' , ')} ]\n`
+			for(var i = 0; i < 6; i++) {
+				const value = i + 1;
+				if(diceResult[ value ]) {
+					str += `${value}: ${diceResult[ value ]}\n`
+				}
+			}
+			this.sendChat({
+				channel:0, message: str
+			});
+		},
+		useBouquets: function(count, text) {
+			this.bringer.bouquet -= count;
+			this.sendChat({
+				channel:0, message: `${Tattes.Battle.CONSTS.ACT.BOUQUET}: ${text}${Tattes.Battle.CONSTS.ACT.BOUQUET_COUNT} (${Tattes.Battle.CONSTS.ACT.BOUQUET_STOCK}${this.bringer.bouquet}${Tattes.Battle.CONSTS.ACT.BOUQUET_COUNT})`
+			});
+		},
 		chargeApply: function() {
+			console.log(this.stacked)
 			this.chargeResult.forEach((v)=>{
 				this.stacked[Number(v) - 1]++;
 			})
+			console.log(this.stacked)
 			this.chargeResult = [];
 		},
 		updateChargeDiceWithHand: function(d) {
