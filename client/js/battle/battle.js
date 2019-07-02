@@ -179,9 +179,7 @@ Vue.component('tattes-battle', {
 			}
 		},
 		onUpdateStack: function(data) {
-			console.log(this.stacked)
 			this.stacked[data.index] = Number(data.value);
-			console.log(this.stacked)
 		},
 		attack: function() {
 			const diceResult = this.diceRoll(this.attackDices);
@@ -204,17 +202,13 @@ Vue.component('tattes-battle', {
 			});
 		},
 		chargeApply: function() {
-			console.log(this.stacked)
 			this.chargeResult.forEach((v)=>{
 				this.stacked[Number(v) - 1]++;
 			});
 			this.chargeResult=[];
-			console.log(this.stacked)
 		},
 		updateChargeDiceWithHand: function(d) {
-			console.log(this.chargeResult)
 			this.chargeResult[d.index] = Number(d.value);
-			console.log(this.chargeResult)
 		},
 		charge: function() {
 			const dice = Number(this.bringer.status.charge) + Number(this.rounds);
