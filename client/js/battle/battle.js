@@ -63,7 +63,7 @@ Vue.component('tattes-battle', {
 					 v-for="skill in bringer.skills"
 					 :key="skill.id"
 					 :skill="skill"
-					 :stack="stacked[skill.id]"
+					 :stack="stacked[Number(skill.id)]"
 					 @${Tattes.Skill.CONSTS.ID}-events-sendInfo="onSkillClick"
 					 @${Tattes.Skill.CONSTS.ID}-events-updateStack="onUpdateStack"
 				></tattes-skill>
@@ -179,7 +179,7 @@ Vue.component('tattes-battle', {
 			}
 		},
 		onUpdateStack: function(data) {
-			console.log(this.stacked);
+			console.log(this.stacked)
 			this.stacked[data.index] = Number(data.value);
 			console.log(this.stacked)
 		},
@@ -207,17 +207,18 @@ Vue.component('tattes-battle', {
 			console.log(this.stacked)
 			this.chargeResult.forEach((v)=>{
 				this.stacked[Number(v) - 1]++;
-			})
+			});
+			this.chargeResult=[];
 			console.log(this.stacked)
-			this.chargeResult = [];
 		},
 		updateChargeDiceWithHand: function(d) {
-			this.chargeResult[d.index] = d.value;
+			console.log(this.chargeResult)
+			this.chargeResult[d.index] = Number(d.value);
+			console.log(this.chargeResult)
 		},
 		charge: function() {
 			const dice = Number(this.bringer.status.charge) + Number(this.rounds);
 			const diceResult = this.diceRoll(dice);
-
 			this.chargeResult = this.diceToList(diceResult);
 
 			this.sendChat({

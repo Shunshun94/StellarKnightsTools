@@ -1,15 +1,16 @@
 Vue.component('tattes-charge-dice', {
 	props: ['dice', 'index'],
-	data: function(){
-		return {
-			diceValue: Number(this.dice)
-		};
-	},
-	template: `<input type="number" class="${Tattes.ChargeDice.CONSTS.ID}" v-model="diceValue" min="1" max="6" />`,
-	watch: {
-		diceValue: function(val) {
+	template: `<input
+		type="number"
+		class="${Tattes.ChargeDice.CONSTS.ID}"
+		@change="updateChargeDiceValue"
+		v-model="dice"
+		min="1"
+		max="6" />`,
+	methods: {
+		updateChargeDiceValue: function(event) {
 			this.$emit(`${Tattes.ChargeDice.CONSTS.ID}-update`, {
-				index: this.index, value: this.diceValue
+				index: this.index, value: event.target.value
 			});
 		}
 	}
