@@ -34,6 +34,10 @@ Tattes.Audience.CONSTS = {
 Tattes.Battle = {};
 Tattes.Battle.CONSTS = {
 		ID: 'tattes-battle',
+		MAP: {
+			CGI: 'http://hiyo-hitsu.sakura.ne.jp/sn/map.cgi',
+			REGEXP: /hiyo-hitsu\.sakura\.ne\.jp\/sn\/map\.cgi\?place=(.*),(.*),(.*),(.*),(.*),(.*)/
+		},
 		INFO: {
 			CHARGE: 'チャージ',
 			DEFENSE: '防御力',
@@ -56,7 +60,10 @@ Tattes.Battle.CONSTS = {
 			BOUQUET_STOCK: '残',
 
 			ATTACKING: 'アタック判定のダイスを振る',
-			ATTACKING_DICE: 'ダイス'
+			ATTACKING_DICE: 'ダイス',
+
+			MOVED_TO_PREFIX: '',
+			MOVED_TO_SUFFIX: 'に移動'
 		}
 };
 

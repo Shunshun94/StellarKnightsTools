@@ -162,7 +162,8 @@
 }
 
 .tattes-battle-act-move-menu-place:hover {
-	background-color:black;
+	fill:black;
+	stroke:white;
 }
 
 #tattes-battle-act-attack {

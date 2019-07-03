@@ -5,7 +5,8 @@ Vue.component('tattes-battle', {
 			rounds: 1,
 			stacked: [0,0,0,0,0,0],
 			chargeResult: [],
-			attackDices: 1
+			attackDices: 1,
+			mapArray: ['', '', '', '', '', '']
 		};
 	},
 	template: `<section id="${Tattes.Battle.CONSTS.ID}">
@@ -166,12 +167,19 @@ Vue.component('tattes-battle', {
 	</section>`,
 	computed: {
 		mapStyle: function() {
-			return `background-image:url('http://hiyo-hitsu.sakura.ne.jp/sn/map.cgi?place=')`;
+			return `background-image:url('${Tattes.Battle.CONSTS.MAP.CGI}?place=${this.mapArray.join(',')}')`;
 		}
 	},
 	methods: {
 		onMoveClick: function(num) {
-			console.log(num)
+			this.mapArray = this.mapArray.map((v)=>{
+				return v.replace(this.bringer.iconName, '');
+			});
+			this.mapArray[num - 1] += this.bringer.iconName;
+			const url = `${Tattes.Battle.CONSTS.MAP.CGI}?place=${this.mapArray.join(',')}`;
+			this.sendChat({
+				channel:0, message: `${url}\n${Tattes.Battle.CONSTS.ACT.MOVED_TO_PREFIX}${num}${Tattes.Battle.CONSTS.ACT.MOVED_TO_SUFFIX}`
+			});
 		},
 		onSkillClick: function(data) {
 			if(data.attack) {

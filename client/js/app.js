@@ -13,10 +13,10 @@ const initTattes = async (params) =>{
 		bringer: characterData.base,
 		sheath: characterData.sheath
 	};
+	data.bringer.iconName = params.iconName ? decodeURI(params.iconName) : data.bringer.name.substr(0,1);
 	data.bringer.id = characterId;
 	data.bringer.isBringer = true;
-	data.bringer.skills = characterData.skills;
-	data.bringer.skills = data.bringer.skills.map((v, i)=>{
+	data.bringer.skills = characterData.skills.map((v, i)=>{
 		v.id = i;
 		v.effect = v.effect.replace(/[０-９]/g, (s)=>{
 		    return String.fromCharCode(s.charCodeAt(0) - 65248);
