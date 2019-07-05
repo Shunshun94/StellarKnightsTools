@@ -167,7 +167,19 @@ Vue.component('tattes-battle', {
 	</section>`,
 	computed: {
 		mapStyle: function() {
-			return `background-image:url('${Tattes.Battle.CONSTS.MAP.CGI}?place=${this.mapArray.join(',')}')`;
+			return `background-image:url('${this.mapUrl}')`;
+		},
+		mapUrl: function(d){
+			const mapCand = this.chat.log.map((c)=>{
+				return Tattes.Battle.CONSTS.MAP.REGEXP.exec(c[1].message)
+			}).filter((d)=>{return d});
+			if(mapCand.length) {
+				const raw = mapCand[0];
+				this.mapArray = mapCand[0].slice(1,7);
+				return `http://${mapCand[0][0]}`;
+			} else {
+				return Tattes.Battle.CONSTS.MAP.CGI;
+			}
 		}
 	},
 	methods: {
