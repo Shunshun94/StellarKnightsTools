@@ -16,8 +16,8 @@ Vue.component('battle-chat', {
 					placeholder="${Tattes.Chat.CommonChat.CONSTS.INPUTAREA}"
 					v-model="text"
 					@input="onEditText"
-					@keyup.enter="submit"
-					@keyup.ctrl.219="insertParentheses"
+					@keydown.enter="submit"
+					@keydown.ctrl.219="insertParentheses"
 					:class="inputTextClass"></textarea>
 				<p class="${Tattes.Chat.CommonChat.CONSTS.ID}-input-explanation">${Tattes.Chat.CommonChat.CONSTS.HOW_TO_POST}</p>
 			</div>
@@ -60,6 +60,7 @@ Vue.component('battle-chat', {
 			if(e.shiftKey) {
 				return;
 			}
+			e.preventDefault();
 			const text = this.text.trim();
 			if(Tattes.Chat.CommonChat.CONSTS.UNEXPECTED.includes(text) || /^\s+$/.test(text)) {
 				if(! window.confirm(Tattes.Chat.CommonChat.CONSTS.IS_IT_OK)) {
