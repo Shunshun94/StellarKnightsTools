@@ -20,8 +20,8 @@ Vue.component('tattes-audience', {
 					<textarea 
 						placeholder="${Tattes.Chat.CommonChat.CONSTS.INPUTAREA}"
 						v-model="text"
-						@keyup.enter="submit"
-						@keyup.ctrl.66="insertText('${Tattes.Audience.CONSTS.TEXTS.BOUQUET}')"
+						@keydown.enter="submit"
+						@keydown.ctrl.66="insertText('${Tattes.Audience.CONSTS.TEXTS.BOUQUET}')"
 						:class="inputTextClass"></textarea>
 					<p class="${Tattes.Chat.CommonChat.CONSTS.ID}-input-explanation">${Tattes.Audience.CONSTS.HOW_TO_POST}</p>
 				</div>
