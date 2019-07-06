@@ -40,6 +40,11 @@ Vue.component('tattes-battle', {
 				<input v-model="rounds" type="number" min="1" />			
 			</div>
 
+			<div id="${Tattes.Battle.CONSTS.ID}-act-shareinfo">
+				<h3>${Tattes.Battle.CONSTS.ACT.STATUS}</h3>
+				<button @click="shareInfo">${Tattes.Battle.CONSTS.ACT.STATUS}</button>			
+			</div>
+
 			<div id="${Tattes.Battle.CONSTS.ID}-act-charge">
 				<h3>${Tattes.Battle.CONSTS.ACT.CHARGE}</h3>
 				<button @click="charge">${Tattes.Battle.CONSTS.ACT.CHARGING}</button>
@@ -183,6 +188,16 @@ Vue.component('tattes-battle', {
 		}
 	},
 	methods: {
+		shareInfo: function() {
+			const str = `\n${Tattes.Battle.CONSTS.INFO.HP}： ${this.bringer.status.hp}\n${Tattes.Battle.CONSTS.INFO.BOUQUET}： ${this.bringer.bouquet}\n${Tattes.Battle.CONSTS.INFO.SETDICE}： \n` +
+			this.bringer.skills.map((s, i)=>{
+				return `　　${Number(s.id) + 1} ${s.name}： ${this.stacked[i]}${Tattes.Battle.CONSTS.ACT.ATTACKING_COUNT}`;
+			}).join('\n');
+			this.sendChat({
+				channel:0, message: str
+			});
+			alertify.success(Tattes.Battle.CONSTS.ACT.SHARED);
+		},
 		onMoveClick: function(num) {
 			this.mapArray = this.mapArray.map((v)=>{
 				return v.replace(this.bringer.iconName, '');

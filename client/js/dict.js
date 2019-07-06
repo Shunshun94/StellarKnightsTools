@@ -42,7 +42,8 @@ Tattes.Battle.CONSTS = {
 			CHARGE: 'チャージ',
 			DEFENSE: '防御力',
 			HP: '耐久力',
-			BOUQUET: 'ブーケ'
+			BOUQUET: 'ブーケ',
+			SETDICE: 'セットダイス'
 		},
 		ACT: {
 			CHARGE: 'チャージ',
@@ -51,6 +52,7 @@ Tattes.Battle.CONSTS = {
 			ATTACK: 'アタック判定',
 			BOUQUET: 'ブーケ使用',
 			ROUNDS: '現在のラウンド数',
+			STATUS: '状態を共有する',
 
 			CHARGING: 'チャージ判定のダイスを振る',
 			CHARGING_RESULT: 'チャージ判定 結果',
@@ -66,7 +68,9 @@ Tattes.Battle.CONSTS = {
 			ATTACKING_COUNT: 'つ',
 
 			MOVED_TO_PREFIX: '',
-			MOVED_TO_SUFFIX: 'に移動しました'
+			MOVED_TO_SUFFIX: 'に移動しました',
+
+			SHARED: '状態を共有しました'
 		}
 };
 

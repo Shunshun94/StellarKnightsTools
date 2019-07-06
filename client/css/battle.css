@@ -75,6 +75,11 @@
 	left: 368px;
 }
 
+#tattes-battle-act > #tattes-battle-act-shareinfo {
+	position:absolute;
+	left: 520px;
+}
+
 #tattes-battle-act input {
 	font-size:200%;
 	width:60px;
@@ -82,7 +87,8 @@
 	position:relative;
 }
 
-#tattes-battle-act > #tattes-battle-act-charge > button {
+#tattes-battle-act > #tattes-battle-act-charge > button,
+#tattes-battle-act > #tattes-battle-act-shareinfo > button {
 	padding:7px;
 }
 
