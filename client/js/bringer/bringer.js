@@ -24,7 +24,7 @@ Vue.component('tattes-bringer', {
 			<h2 id="${Tattes.Bringer.CONSTS.ID}-name">{{bringer.name}}</h2>
 			<common-chat
 				v-on:${Tattes.Chat.CommonChat.CONSTS.ID}-events-sendChat="sendChat"
-				v-on:${Tattes.Chat.CommonChat.CONSTS.ID}-events-share="shareText"
+				v-on:${Tattes.Chat.CommonChat.CONSTS.ID}-events-receptBouquet="receptBouquet"
 				v-bind:chat="chatLog"></common-chat>
 			<tattes-character-status
 				v-bind:character="bringer.character"
@@ -46,13 +46,10 @@ Vue.component('tattes-bringer', {
 			</div>
 		</section>`,
 		methods: {
-			shareText: function(e) {
-				const parseResult = Tattes.Bringer.CONSTS.BOUQUET_PARSER.exec(e.message);
-				if(e.channel === 0 && parseResult) {
-					this.bringer.bouquet = Number(this.bringer.bouquet) + Number(parseResult[1]);
-					alertify.success(Tattes.Bringer.CONSTS.NOTIFY_GET_BOUQUET.replace('\d', parseResult[1]).replace('\d', this.bringer.bouquet));
-				}
+			receptBouquet: function(count) {
+				this.bringer.bouquet = Number(this.bringer.bouquet) + Number(count);
 			},
+			shareText: function(e) {},
 			switchBouquet: function() {
 				this.isBouquetShow = ! this.isBouquetShow;
 			},

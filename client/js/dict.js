@@ -83,7 +83,7 @@ Tattes.Bringer.CONSTS = {
 		BOUQUET_SHARE_COUNT: 'ブーケの数を共有する',
 		BOUQUET_SHARED_COUNT: 'ブーケの数を共有しました',
 		BOUQUET_PARSER: /ブーケ譲渡(\d+)/,
-		BOUQUET_HOW_TO_GET: '「ブーケ譲渡」と書かれた発言をクリックするとブーケを受け取れます',
+		BOUQUET_HOW_TO_GET: '「ブーケを受け取る」と書かれたボタンをクリックするとブーケを受け取れます',
 		NOTIFY_GET_BOUQUET: 'ブーケを\d枚受け取りました (合計\d)'
 };
 
@@ -118,7 +118,9 @@ Tattes.Chat.CommonChat.CONSTS = {
 			0: '',
 			1: '＠ ブーケ',
 			2: '＠ 雑談'
-		}
+		},
+		GET_BOUQUET: 'ブーケを受け取る',
+		BOUQUET_PARSER: /ブーケ譲渡(\d+)/,
 };
 Tattes.Chat.BattleChat = {};
 Tattes.Chat.BattleChat.CONSTS = {
