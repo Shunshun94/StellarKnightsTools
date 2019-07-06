@@ -120,6 +120,11 @@ Tattes.Chat.CommonChat.CONSTS = {
 			2: '＠ 雑談'
 		}
 };
+Tattes.Chat.BattleChat = {};
+Tattes.Chat.BattleChat.CONSTS = {
+		ID: 'tattes-chat-battlechat',
+};
+
 Tattes.Chat.CommonChat.REGEXP = [
 	/^\*?\*?([^:：\*\n]+)\*?\*?[:：]?\s*(「[^」]*」)/,
 	/^\*?\*?([^:：\*\n]+)\*?\*?[:：]([^「]*)/

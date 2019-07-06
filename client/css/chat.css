@@ -1,6 +1,7 @@
 @CHARSET "UTF-8";
 
-.tattes-chat-commonchat {
+.tattes-chat-commonchat,
+.tattes-chat-battlechat {
 	border:3px black solid;
 	font-size:80%;
 	width:600px;

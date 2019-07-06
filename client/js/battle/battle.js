@@ -6,14 +6,17 @@ Vue.component('tattes-battle', {
 			stacked: [0,0,0,0,0,0],
 			chargeResult: [],
 			attackDices: 1,
-			mapArray: ['', '', '', '', '', '']
+			mapArray: ['', '', '', '', '', ''],
+			chatInput:''
 		};
 	},
 	template: `<section id="${Tattes.Battle.CONSTS.ID}">
 		<div id="${Tattes.Battle.CONSTS.ID}-left">
-			<common-chat
-				v-on:${Tattes.Chat.CommonChat.CONSTS.ID}-events-sendChat="sendChat"
-				v-bind:chat="chat"></common-chat>
+			<battle-chat
+				@${Tattes.Chat.CommonChat.CONSTS.ID}-events-sendChat="sendChat"
+				@${Tattes.Chat.BattleChat.CONSTS.ID}-events-updateInputText="onUpdateChatInputText"
+				v-bind:text="chatInput"
+				v-bind:chat="chat"></battle-chat>
 			<div id="${Tattes.Battle.CONSTS.ID}-info">
 				<div id="${Tattes.Battle.CONSTS.ID}-info-smallmap" v-bind:style="mapStyle"></div>
 				<span class="${Tattes.Battle.CONSTS.ID}-info-status">
@@ -198,6 +201,9 @@ Vue.component('tattes-battle', {
 			});
 			alertify.success(Tattes.Battle.CONSTS.ACT.SHARED);
 		},
+		onUpdateChatInputText: function(e) {
+			this.chatInput = e.value;
+		},
 		onMoveClick: function(num) {
 			this.mapArray = this.mapArray.map((v)=>{
 				return v.replace(this.bringer.iconName, '');
@@ -213,6 +219,7 @@ Vue.component('tattes-battle', {
 			if(data.attack) {
 				this.attackDices = data.attack;
 			}
+			this.chatInput += data.name;
 		},
 		onUpdateStack: function(data) {
 			this.stacked[data.index] = Number(data.value);

@@ -6,7 +6,7 @@
 	width:400px;
 }
 
-#tattes-battle-left > .tattes-chat-commonchat {
+#tattes-battle-left > .tattes-chat-battlechat {
 	height:400px;
 	width:400px;
 	border:3px black solid;
@@ -14,11 +14,11 @@
 	top:0px;
 }
 
-#tattes-battle-left > .tattes-chat-commonchat .tattes-chat-commonchat-input-text {
+#tattes-battle-left > .tattes-chat-battlechat .tattes-chat-commonchat-input-text {
 	width:380px;
 }
 
-#tattes-battle-left > .tattes-chat-commonchat > .tattes-chat-commonchat-logs {
+#tattes-battle-left > .tattes-chat-battlechat > .tattes-chat-commonchat-logs {
 	height:274px;
 }
 
@@ -110,6 +110,10 @@
 	height:70px;
 	position:relative;
 	display:inline-block;
+}
+
+.tattes-skill:hover {
+	color:green;
 }
 
 .tattes-skill > div {
