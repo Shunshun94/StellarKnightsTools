@@ -55,15 +55,18 @@ Tattes.Battle.CONSTS = {
 			CHARGING: 'チャージ判定のダイスを振る',
 			CHARGING_RESULT: 'チャージ判定 結果',
 			CHARGING_APPLY: '反映',
+			CHARGING_TRIED: 'チャージ判定しました',
+			CHARGING_APPLIED: 'チャージ判定の結果を反映しました',
 
 			BOUQUET_COUNT: '枚',
 			BOUQUET_STOCK: '残',
 
 			ATTACKING: 'アタック判定のダイスを振る',
 			ATTACKING_DICE: 'ダイス',
+			ATTACKING_COUNT: 'つ',
 
 			MOVED_TO_PREFIX: '',
-			MOVED_TO_SUFFIX: 'に移動'
+			MOVED_TO_SUFFIX: 'に移動しました'
 		}
 };
 

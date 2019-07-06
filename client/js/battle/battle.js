@@ -192,6 +192,7 @@ Vue.component('tattes-battle', {
 			this.sendChat({
 				channel:0, message: `${url}\n${Tattes.Battle.CONSTS.ACT.MOVED_TO_PREFIX}${num}${Tattes.Battle.CONSTS.ACT.MOVED_TO_SUFFIX}`
 			});
+			alertify.success(`${Tattes.Battle.CONSTS.ACT.MOVED_TO_PREFIX}${num}${Tattes.Battle.CONSTS.ACT.MOVED_TO_SUFFIX}`);
 		},
 		onSkillClick: function(data) {
 			if(data.attack) {
@@ -208,23 +209,30 @@ Vue.component('tattes-battle', {
 			for(var i = 0; i < 6; i++) {
 				const value = i + 1;
 				if(diceResult[ value ]) {
-					str += `${value}: ${diceResult[ value ]}\n`
+					str += `　　${value}: ${diceResult[ value ]}${Tattes.Battle.CONSTS.ACT.ATTACKING_COUNT}\n`
 				}
 			}
 			this.sendChat({
 				channel:0, message: str
 			});
+			alertify.success(`${Tattes.Battle.CONSTS.ACT.ATTACK}: ${this.attackDices}${Tattes.Battle.CONSTS.ACT.ATTACKING_DICE}`);
 		},
 		useBouquets: function(count, text) {
 			this.bringer.bouquet -= count;
 			this.sendChat({
 				channel:0, message: `${Tattes.Battle.CONSTS.ACT.BOUQUET}: ${text}${Tattes.Battle.CONSTS.ACT.BOUQUET_COUNT} (${Tattes.Battle.CONSTS.ACT.BOUQUET_STOCK}${this.bringer.bouquet}${Tattes.Battle.CONSTS.ACT.BOUQUET_COUNT})`
 			});
+			alertify.success(`${Tattes.Battle.CONSTS.ACT.BOUQUET}: ${text}${Tattes.Battle.CONSTS.ACT.BOUQUET_COUNT} (${Tattes.Battle.CONSTS.ACT.BOUQUET_STOCK}${this.bringer.bouquet}${Tattes.Battle.CONSTS.ACT.BOUQUET_COUNT})`);
 		},
 		chargeApply: function() {
+			let str = `${Tattes.Battle.CONSTS.ACT.CHARGING_APPLIED}\n[ ${this.chargeResult.join(' , ')} ]`;
 			this.chargeResult.forEach((v)=>{
 				this.stacked[Number(v) - 1]++;
 			});
+			this.sendChat({
+				channel:0, message: str
+			});
+			alertify.success(str);
 			this.chargeResult=[];
 		},
 		updateChargeDiceWithHand: function(d) {
@@ -238,6 +246,7 @@ Vue.component('tattes-battle', {
 			this.sendChat({
 				channel:0, message: `${Tattes.Battle.CONSTS.ACT.CHARGING_RESULT}\n[ ${this.chargeResult.join(' , ')} ]`
 			});
+			alertify.success(Tattes.Battle.CONSTS.ACT.CHARGING_TRIED);
 		},
 		diceToList: function(diceResult) {
 			let result = [];
