@@ -31,9 +31,12 @@ const initTattes = async (params) =>{
 	data.sheath.isBringer = false;
 	data.activeTab = 0;
 	data.chat = {
-		log:[]
+		log:[[0, {
+			senderName: 'Tattes System',
+			message: Tattes.Chat.CommonChat.CONSTS.NOWLOADING,
+			channel: 0
+		}]]
 	};
-	console.log(JSON.stringify(data, null, 2));
 	const vueObject = new Vue({
 		el: '#tattes',
 		data: data,

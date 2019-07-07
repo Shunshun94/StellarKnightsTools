@@ -111,6 +111,7 @@ Tattes.Chat = {};
 Tattes.Chat.CommonChat = {};
 Tattes.Chat.CommonChat.CONSTS = {
 		ID: 'tattes-chat-commonchat',
+		NOWLOADING: '発言を取得中……',
 		UNEXPECTED: ['[]', '""', `""`, '「」', '()', '（）', '<>', '＜＞', ''],
 		IS_IT_OK: '誤送信な気がします。本当に送りますか?',
 		HOW_TO_POST: 'SHIFT + Enter で改行、Enter で発言。CTRL + [ で 「」 挿入',
