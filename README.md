@@ -1,6 +1,10 @@
 # StellarKnightsTools
 銀剣のステラナイツをにゃーんするためのツール群
 
+## リポジトリ
+
+[https://github.com/Shunshun94/StellarKnightsTools](https://github.com/Shunshun94/StellarKnightsTools)
+
 ## サーバツール群
 
 [サーバ設置のツール群](./server)

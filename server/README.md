@@ -19,3 +19,7 @@ font.ttf は各々自作し、アップロードする必要があります。
 アップロードできるサイズに制限がある場合はサブセットフォントメーカー等を使いいい感じに削減してください。
 
 サブセットフォントメーカーについては https://opentype.jp/subsetfontmk.htm
+
+## リポジトリ
+
+[https://github.com/Shunshun94/StellarKnightsTools](https://github.com/Shunshun94/StellarKnightsTools)
