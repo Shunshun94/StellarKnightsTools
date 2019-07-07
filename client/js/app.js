@@ -4,9 +4,10 @@ const initTattes = async (params) =>{
 	const characterId = params.sheet.split('=')[1];
 	const characterData = await characterSheetClient.sendRequest(Tattes.CONSTS.SYSTEM_CODE, characterId);
 
+	// シースから見たパートナーなので partner.bringer を取得している
 	const partnerId = characterData.partner.bringer.url.split('=')[1];
 	const partnerData = await characterSheetClient.sendRequest(Tattes.CONSTS.SYSTEM_CODE, partnerId);
-	
+
 	const discordClient = new io.github.shunshun94.trpg.discord.Room(params.token, params.room.split(','));
 
 	const data = {
