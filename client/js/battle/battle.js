@@ -7,7 +7,8 @@ Vue.component('tattes-battle', {
 			chargeResult: [],
 			attackDices: 1,
 			mapArray: ['', '', '', '', '', ''],
-			chatInput:''
+			chatInput: '',
+			chargeDiceCount: 1
 		};
 	},
 	template: `<section id="${Tattes.Battle.CONSTS.ID}">
@@ -45,12 +46,12 @@ Vue.component('tattes-battle', {
 
 			<div id="${Tattes.Battle.CONSTS.ID}-act-shareinfo">
 				<h3>${Tattes.Battle.CONSTS.ACT.STATUS}</h3>
-				<button @click="shareInfo">${Tattes.Battle.CONSTS.ACT.STATUS}</button>			
+				<button @click="shareInfo">${Tattes.Battle.CONSTS.ACT.STATUS}</button>
 			</div>
 
 			<div id="${Tattes.Battle.CONSTS.ID}-act-charge">
 				<h3>${Tattes.Battle.CONSTS.ACT.CHARGE}</h3>
-				<button @click="charge">${Tattes.Battle.CONSTS.ACT.CHARGING}</button>
+				<button @click="charge">${Tattes.Battle.CONSTS.ACT.CHARGING}</button><input v-model="chargeDiceCount" type="number" min="1" />　${Tattes.Battle.CONSTS.ACT.CHARGING_COUNT}
 				<div id="${Tattes.Battle.CONSTS.ID}-act-charge-diceList">
 					<tattes-charge-dice
 						v-for="(dice, index) in chargeResult"
@@ -261,7 +262,7 @@ Vue.component('tattes-battle', {
 			this.chargeResult[d.index] = Number(d.value);
 		},
 		charge: function() {
-			const dice = Number(this.bringer.status.charge) + Number(this.rounds);
+			const dice = Number(this.chargeDiceCount);
 			const diceResult = this.diceRoll(dice);
 			this.chargeResult = this.diceToList(diceResult);
 

@@ -59,6 +59,7 @@ Tattes.Battle.CONSTS = {
 			CHARGING_APPLY: '反映',
 			CHARGING_TRIED: 'チャージ判定しました',
 			CHARGING_APPLIED: 'チャージ判定の結果を反映しました',
+			CHARGING_COUNT: 'つ',
 
 			BOUQUET_COUNT: '枚',
 			BOUQUET_STOCK: '残',

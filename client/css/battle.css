@@ -87,9 +87,14 @@
 	position:relative;
 }
 
-#tattes-battle-act > #tattes-battle-act-charge > button,
 #tattes-battle-act > #tattes-battle-act-shareinfo > button {
 	padding:7px;
+}
+
+#tattes-battle-act > #tattes-battle-act-charge > button {
+	padding:7px;
+	position: relative;
+	top: -5px;
 }
 
 #tattes-battle-act-charge-diceList {
