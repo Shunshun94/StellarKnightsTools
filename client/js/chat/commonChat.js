@@ -49,7 +49,7 @@ Vue.component('common-chat', {
 				// 少し処理を遅延させないとカーソルの移動が DOM の再描画で上書きされてしまう
 				// 描画終わりそうな短い時間待った上でカーソルを動かす
 				setTimeout(()=>{
-					this.$el.querySelector('textarea').setSelectionRange(1,1);
+					e.target.setSelectionRange(1,1);
 				}, 200);
 			}
 		},
