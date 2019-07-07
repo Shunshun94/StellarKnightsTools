@@ -13,9 +13,17 @@ const initTattes = async (params) =>{
 		bringer: characterData.base,
 		sheath: characterData.sheath
 	};
+	data.version = Tattes.VERSION;
+	data.bringer.iconName = params.iconName ? decodeURI(params.iconName) : data.bringer.name.substr(0,1);
 	data.bringer.id = characterId;
 	data.bringer.isBringer = true;
-	data.bringer.skills = characterData.skills;
+	data.bringer.skills = characterData.skills.map((v, i)=>{
+		v.id = i;
+		v.effect = v.effect.replace(/[０-９]/g, (s)=>{
+		    return String.fromCharCode(s.charCodeAt(0) - 65248);
+		});
+		return v;
+	});
 	data.bringer.status = characterData.status;
 	data.bringer.bouquet = 0;
 	data.sheath.id = characterId;
@@ -23,9 +31,12 @@ const initTattes = async (params) =>{
 	data.sheath.isBringer = false;
 	data.activeTab = 0;
 	data.chat = {
-		log:[]
+		log:[[0, {
+			senderName: 'Tattes System',
+			message: Tattes.Chat.CommonChat.CONSTS.NOWLOADING,
+			channel: 0
+		}]]
 	};
-	console.log(JSON.stringify(data, null, 2));
 	const vueObject = new Vue({
 		el: '#tattes',
 		data: data,

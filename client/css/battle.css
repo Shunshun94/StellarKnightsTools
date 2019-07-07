@@ -1,0 +1,188 @@
+#tattes-battle > div {
+	height: 600px;	
+}	
+
+#tattes-battle-left {
+	width:400px;
+}
+
+#tattes-battle-left > .tattes-chat-battlechat {
+	height:400px;
+	width:400px;
+	border:3px black solid;
+	left:0px;
+	top:0px;
+}
+
+#tattes-battle-left > .tattes-chat-battlechat .tattes-chat-commonchat-input-text {
+	width:380px;
+}
+
+#tattes-battle-left > .tattes-chat-battlechat > .tattes-chat-commonchat-logs {
+	height:274px;
+}
+
+#tattes-battle-info {
+	width:400px;
+	height:200px;
+	border:3px black solid;
+	position:relative;
+	padding:4px;
+	top:400px;
+}
+
+.tattes-battle-info-status {
+	display:block;
+	text-align:right;
+	padding-right:16px;
+	position:relative;
+}
+
+#tattes-battle-info-smallmap {
+	height:194px;
+	width:194px;
+	background-size:cover;
+	position:absolute;
+	left:4px;
+	top:0px;
+}
+
+.tattes-battle-info-status-label {
+	position:relative;
+	top: -12px;
+	left: 12px;
+}
+
+.tattes-battle-info-status-value {
+	font-size:200%;
+	width:60px;
+	left:8px;
+	position:relative;
+}
+
+#tattes-battle-act {
+	width:740px;
+	position:absolute;
+	left:400px;
+	top:0px;
+	padding:4px;
+	border:3px black solid;
+	font-size:80%;
+}
+
+#tattes-battle-act-rounds {
+	position:absolute;
+	left: 368px;
+}
+
+#tattes-battle-act > #tattes-battle-act-shareinfo {
+	position:absolute;
+	left: 520px;
+}
+
+#tattes-battle-act input {
+	font-size:200%;
+	width:60px;
+	left:8px;
+	position:relative;
+}
+
+#tattes-battle-act > #tattes-battle-act-shareinfo > button {
+	padding:7px;
+}
+
+#tattes-battle-act > #tattes-battle-act-charge > button {
+	padding:7px;
+	position: relative;
+	top: -5px;
+}
+
+#tattes-battle-act-charge-diceList {
+	padding-top:12px;
+	height:48px;
+}
+
+#tattes-battle-act-charge-diceList > button,
+#tattes-battle-act-attack > button {
+	padding:7px;
+	position:relative;
+	top:-5px;
+}
+
+.tattes-skill {
+	width: 360px;
+	height:70px;
+	position:relative;
+	display:inline-block;
+}
+
+.tattes-skill:hover {
+	color:green;
+}
+
+.tattes-skill > div {
+	border:1px black solid;
+}
+
+.tattes-skill-num {
+	width: 20px;
+}
+
+.tattes-skill-name {
+	position:absolute;
+	top:0px;
+	left:20px;
+	width:340px;
+}
+
+.tattes-skill-count {
+	width: 32px;
+	height:55px;
+}
+
+#tattes-battle-act .tattes-skill-count input {
+	font-size:140%;
+	width:30px;
+	left:0px;
+}
+
+.tattes-skill-text {
+	position:absolute;
+	top:15px;
+	left:32px;
+	width: 328px;
+	height:55px;
+	overflow:scroll;
+}
+
+#tattes-battle-act-bouquet {
+	position:absolute;
+	left: 368px;
+}
+
+#tattes-battle-act-bouquet > p {
+	position: relative;
+	left:8px;
+}
+#tattes-battle-act-move{
+	position:relative;
+	width:300px;
+}
+#tattes-battle-act-move-menu {
+	position: relative;
+	left:8px;
+	background-color:white;
+	width:220px;
+	height:220px;
+}
+
+.tattes-battle-act-move-menu-place:hover {
+	fill:black;
+	stroke:white;
+}
+
+#tattes-battle-act-attack {
+	position:absolute;
+	left: 368px;
+	top: 460px;
+}

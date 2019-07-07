@@ -24,7 +24,7 @@ Vue.component('tattes-bringer', {
 			<h2 id="${Tattes.Bringer.CONSTS.ID}-name">{{bringer.name}}</h2>
 			<common-chat
 				v-on:${Tattes.Chat.CommonChat.CONSTS.ID}-events-sendChat="sendChat"
-				v-on:${Tattes.Chat.CommonChat.CONSTS.ID}-events-share="shareText"
+				v-on:${Tattes.Chat.CommonChat.CONSTS.ID}-events-receptBouquet="receptBouquet"
 				v-bind:chat="chatLog"></common-chat>
 			<tattes-character-status
 				v-bind:character="bringer.character"
@@ -41,17 +41,26 @@ Vue.component('tattes-bringer', {
 				<h3>${Tattes.Bringer.CONSTS.BOUQUET}</h3>
 				<input id="${Tattes.Bringer.CONSTS.ID}-config-bouquet-count" v-model="bringer.bouquet" type="number" />
 				<p id="${Tattes.Bringer.CONSTS.ID}-config-bouquet-explanation">${Tattes.Bringer.CONSTS.BOUQUET_HOW_TO_GET}</p>
+				<button id="${Tattes.Bringer.CONSTS.ID}-config-bouquet-shareCount"
+					@click="shareBouquetCount">${Tattes.Bringer.CONSTS.BOUQUET_SHARE_COUNT}</button>
 			</div>
 		</section>`,
 		methods: {
-			shareText: function(e) {
-				const parseResult = Tattes.Bringer.CONSTS.BOUQUET_PARSER.exec(e.message);
-				if(e.channel === 0 && parseResult) {
-					this.bringer.bouquet = Number(this.bringer.bouquet) + Number(parseResult[1]);
-				}
+			receptBouquet: function(count) {
+				this.bringer.bouquet = Number(this.bringer.bouquet) + Number(count);
 			},
+			shareText: function(e) {},
 			switchBouquet: function() {
 				this.isBouquetShow = ! this.isBouquetShow;
+			},
+			shareBouquetCount: function() {
+				const data = {
+						message: `${Tattes.Bringer.CONSTS.BOUQUET} ${this.bringer.bouquet}`,
+						channel: 0,
+						name: this.bringer.name
+				};
+				this.$emit(`${Tattes.Bringer.CONSTS.ID}-events-sendchat`, data);
+				alertify.success(Tattes.Bringer.CONSTS.BOUQUET_SHARED_COUNT);
 			},
 			sendChat: function(data) {
 				data.name = this.bringer.name;

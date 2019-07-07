@@ -16,13 +16,16 @@ Vue.component('common-chat', {
 				<textarea 
 					placeholder="${Tattes.Chat.CommonChat.CONSTS.INPUTAREA}"
 					v-model="text"
-					@keyup.enter="submit"
-					@keyup.ctrl.219="insertParentheses"
+					@keydown.enter="submit"
+					@keydown.ctrl.219="insertParentheses"
 					:class="inputTextClass"></textarea>
 				<p class="${Tattes.Chat.CommonChat.CONSTS.ID}-input-explanation">${Tattes.Chat.CommonChat.CONSTS.HOW_TO_POST}</p>
 			</div>
 			<div class="${Tattes.Chat.CommonChat.CONSTS.ID}-logs">
-				<common-chat-post v-on:${Tattes.Chat.CommonChat.CONSTS.ID}-post-events-share="shareText" v-for="post in chat.log" :key="post[0]" v-bind:post="post"></common-chat-post>
+				<common-chat-post
+					@${Tattes.Chat.CommonChat.CONSTS.ID}-post-events-share="shareText"
+					@${Tattes.Chat.CommonChat.CONSTS.ID}-post-events-receptBouquet="receptBouquet"
+					v-for="post in chat.log" :key="post[0]" v-bind:post="post"></common-chat-post>
 			</div>
 		</div>
 	`,
@@ -32,6 +35,9 @@ Vue.component('common-chat', {
 		}
 	},
 	methods: {
+		receptBouquet: function(e) {
+			this.$emit(`${Tattes.Chat.CommonChat.CONSTS.ID}-events-receptBouquet`, e);
+		},
 		shareText: function(e) {
 			this.$emit(`${Tattes.Chat.CommonChat.CONSTS.ID}-events-share`, e);
 		},
@@ -51,6 +57,7 @@ Vue.component('common-chat', {
 			if(e.shiftKey) {
 				return;
 			}
+			e.preventDefault();
 			const text = this.text.trim();
 			if(Tattes.Chat.CommonChat.CONSTS.UNEXPECTED.includes(text) || /^\s+$/.test(text)) {
 				if(! window.confirm(Tattes.Chat.CommonChat.CONSTS.IS_IT_OK)) {
@@ -75,10 +82,15 @@ Vue.component('common-chat-post', {
 				<span class="${Tattes.Chat.CommonChat.CONSTS.ID}-logs-post-info-name">{{name}}</span>
 				<span class="${Tattes.Chat.CommonChat.CONSTS.ID}-logs-post-info-channel">{{channel}}</span>
 			</span>
-			<pre class="${Tattes.Chat.CommonChat.CONSTS.ID}-logs-post-message">{{message}}</pre>
+			<div class="${Tattes.Chat.CommonChat.CONSTS.ID}-logs-post-message">{{message}}<span v-show="isBouquetTos===true" class="${Tattes.Chat.CommonChat.CONSTS.ID}-logs-post-message-bouquetTos"><button @click="receptBouquet">${Tattes.Chat.CommonChat.CONSTS.GET_BOUQUET}</button></span>
+			</div>
 		</div>
 	`,
 	methods: {
+		receptBouquet: function() {
+			const parseResult = Tattes.Chat.CommonChat.CONSTS.BOUQUET_PARSER.exec(this.message);
+			this.$emit(`${Tattes.Chat.CommonChat.CONSTS.ID}-post-events-receptBouquet`, Number(parseResult[1]));
+		},
 		shareText: function() {
 			const data = {
 					message: this.message,
@@ -89,6 +101,9 @@ Vue.component('common-chat-post', {
 		}
 	},
 	computed: {
+		isBouquetTos: function() {
+			return Tattes.Chat.CommonChat.CONSTS.BOUQUET_PARSER.test(this.message);
+		},
 		postClass: function() {
 			return `${Tattes.Chat.CommonChat.CONSTS.ID}-logs-post ${Tattes.Chat.CommonChat.CONSTS.ID}-logs-post-${this.post[1].channel}`
 		},
@@ -96,33 +111,36 @@ Vue.component('common-chat-post', {
 			return Tattes.Chat.CommonChat.CONSTS.CHANNELS[this.post[1].channel]
 		},
 		name: function() {
-			if(this.post[1].message.indexOf('http') > -1) {
-				return this.post[1].senderName;
-			}
 			const reResults = Tattes.Chat.CommonChat.REGEXP.map((re, i)=>{
 				return re.exec(this.post[1].message);
 			}).filter((re)=>{
 				return re;
 			});
 			if(reResults.length) {
-				return reResults[0][1];
+				if(reResults[0][1].indexOf('http') > -1) {
+					return this.post[1].senderName.trim();
+				} else {
+					return reResults[0][1].trim();
+				}
 			} else {
-				return this.post[1].senderName;
+				return this.post[1].senderName.trim();
 			}
 		},
 		message: function() {
-			if(this.post[1].message.indexOf('http') > -1) {
-				return this.post[1].message;
-			}
+			const msgCand = this.post[1].message.replace(Tattes.Chat.CommonChat.CONSTS.MAP_REGEXP, '').trim();
 			const reResults = Tattes.Chat.CommonChat.REGEXP.map((re, i)=>{
-				return re.exec(this.post[1].message);
+				return re.exec(msgCand);
 			}).filter((re)=>{
 				return re;
 			});
 			if(reResults.length) {
-				return reResults[0][2];
+				if(reResults[0][1].indexOf('http') > -1) {
+					return msgCand;
+				} else {
+					return reResults[0][2];
+				}
 			} else {
-				return this.post[1].message;
+				return msgCand;
 			}
 		}
 	}

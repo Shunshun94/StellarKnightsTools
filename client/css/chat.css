@@ -1,6 +1,7 @@
 @CHARSET "UTF-8";
 
-.tattes-chat-commonchat {
+.tattes-chat-commonchat,
+.tattes-chat-battlechat {
 	border:3px black solid;
 	font-size:80%;
 	width:600px;
@@ -61,10 +62,7 @@
 	padding-top:2px;
 	padding-bottom:2px;
 	padding-left:4px;
-}
-
-.tattes-chat-commonchat-logs-post:hover {
-	border:1px black solid;
+	white-space: pre-wrap;
 }
 
 .tattes-chat-commonchat-logs-post-0:nth-child(even){
@@ -94,4 +92,13 @@
 	margin-top:0px;
 	margin-bottom:0px;
 	margin-left:8px;
+	padding-bottom:8px;
+}
+
+.tattes-chat-commonchat-logs-post-message-bouquetTos > button {
+	display:none;
+}
+
+#tattes-bringer .tattes-chat-commonchat-logs-post-message-bouquetTos > button {
+	display:block;
 }

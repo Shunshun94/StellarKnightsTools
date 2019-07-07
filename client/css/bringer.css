@@ -14,7 +14,10 @@
 }
 
 #tattes-bringer-config > button {
+	display:block;
+	text-align:left;
 	width:100%;
+	padding:4px;
 }
 
 #tattes-bringer-config-bouquet-count {

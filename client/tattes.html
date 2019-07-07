@@ -1,22 +1,35 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head
+	　prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+<meta property="og:title" content="TatteS! - Tool for Advanced Tables which are Tattoi and Emoi Stellar knights" />
+<meta property="og:type" content="website" />
+
+<meta property="og:site_name" content="TatteS! - Tool for Advanced Tables which are Tattoi and Emoi Stellar knights" />
+<meta property="og:description"
+	content="銀剣のステラナイツを Discord 上で高速・快適にプレイし、尊さに注力できるようにするツール" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@Shunshun94" />
+<meta name="twitter:text:title" content="TatteS! - Tool for Advanced Tables which are Tattoi and Emoi Stellar knights" />
+
 <link rel="stylesheet" href="css/tattes.css" />
 <link rel="stylesheet" href="css/audience.css" />
 <link rel="stylesheet" href="css/bringer.css" />
 <link rel="stylesheet" href="css/sheath.css" />
 <link rel="stylesheet" href="css/chat.css" />
+<link rel="stylesheet" href="css/battle.css" />
 <link rel="stylesheet" href="css/character-status.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/alertify.min.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/default.min.css"/>
 <meta charset="UTF-8">
 <title>TatteS!</title>
 </head>
 <body>
 	<header><h1>TatteS!</h1></header>
 	<div id="tattes">
-		
-		<nav id="tattes-menu">
-			<span v-bind:class="{ active: activeTab===0 }" class="tattes-menu-tab" v-on:click="changeTab(0)">ブリンガー</span><span v-bind:class="{ active: activeTab===1 }" class="tattes-menu-tab" v-on:click="changeTab(1)">シース</span><span v-bind:class="{ active: activeTab===2 }" class="tattes-menu-tab" v-on:click="changeTab(2)">観客</span>
-		</nav>
+		<tattes-menu
+			v-bind:version="version"
+			v-on:tattes-menu-events-changetab="changeTab"></tattes-menu>
 		<div id="tattes-contents">
 			<tattes-bringer
 				v-show="activeTab===0"
@@ -34,16 +47,22 @@
 				v-bind:chat="chat"
 				v-bind:plname="bringer.player"
 				v-on:tattes-audience-events-sendchat="sendChat"></tattes-audience>
+			<tattes-battle
+				v-show="activeTab===3"
+				v-bind:chat="chat"
+				v-bind:bringer="bringer"
+				v-on:tattes-battle-events-sendchat="sendChat"></tattes-battle>
 		</div>
 
 	</div>
 	<footer>
-	<a target="_blank" href="https://twitter.com/Shunshun94">ツール作者連絡先 (Twitter)</a> | <a target="_blank" href="https://shunshun94.github.io/StellarKnightsTools/">GitHub</a> | <a target="_blank" href="http://amzn.asia/8mNqdKy">ひよこのほしい物りすと</a><br/>
 	本ツールは「どらこにあん」及び「株式会社KADOKAWA」が権利を有する『銀剣のステラナイツ』の二次創作です。<br/>
 	(C)Fuyu Takizato / Draconian<br/>
-	(C)KADOKAWA<br/>
-	<a href="https://fujimi-trpg-online.jp/info/stellar_ug.html" target="_blank">【銀剣のステラナイツ】二次創作ガイドライン</a>
+	(C)KADOKAWA<br/><a href="https://fujimi-trpg-online.jp/info/stellar_ug.html" target="_blank">【銀剣のステラナイツ】二次創作ガイドライン</a><br/><br/>
+	<a target="_blank" href="https://twitter.com/Shunshun94">ツール作者連絡先 (Twitter)</a> | <a target="_blank" href="https://shunshun94.github.io/StellarKnightsTools/">GitHub</a> | <a target="_blank" href="http://amzn.asia/8mNqdKy">ひよこのほしい物りすと</a>
+	
 	</footer>
+	<script src="https://cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/alertify.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	<script src="https://shunshun94.github.io/shared/external/discord.io/index.js"></script>
 	<script src="https://shunshun94.github.io/shared/jquery/com/hiyoko/util/v2/utils.js"></script>
@@ -52,11 +71,16 @@
 	<script src="https://shunshun94.github.io/shared/other/io/github/shunshun94/trpg/discord/client.js"></script>
 	<script src="./js/dict.js"></script>
 	<script src="./js/app.js"></script>
+	<script src="./js/menu/menu.js"></script>
 	<script src="./js/chat/commonChat.js"></script>
 	<script src="./js/character/status.js"></script>
 	<script src="./js/audience/audience.js"></script>
 	<script src="./js/bringer/bringer.js"></script>
 	<script src="./js/sheath/sheath.js"></script>
+	<script src="./js/battle/chargeDice.js"></script>
+	<script src="./js/battle/skill.js"></script>
+	<script src="./js/battle/battle-chat.js"></script>
+	<script src="./js/battle/battle.js"></script>
 	<script src="./js/init.js"></script>
 </body>
 </html>

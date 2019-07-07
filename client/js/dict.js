@@ -31,14 +31,61 @@ Tattes.Audience.CONSTS = {
 		}
 };
 
+Tattes.Battle = {};
+Tattes.Battle.CONSTS = {
+		ID: 'tattes-battle',
+		MAP: {
+			CGI: 'http://hiyo-hitsu.sakura.ne.jp/sn/map.cgi',
+			REGEXP: /https?:\/\/hiyo-hitsu\.sakura\.ne\.jp\/sn\/map\.cgi\?place=(.*),(.*),(.*),(.*),(.*),(.*)/
+		},
+		INFO: {
+			CHARGE: 'チャージ',
+			DEFENSE: '防御力',
+			HP: '耐久力',
+			BOUQUET: 'ブーケ',
+			SETDICE: 'セットダイス'
+		},
+		ACT: {
+			CHARGE: 'チャージ',
+			SKILLS: 'スキル',
+			MOVE: '移動',
+			ATTACK: 'アタック判定',
+			BOUQUET: 'ブーケ使用',
+			ROUNDS: '現在のラウンド数',
+			STATUS: '状態を共有する',
+
+			CHARGING: 'チャージ判定のダイスを振る',
+			CHARGING_RESULT: 'チャージ判定 結果',
+			CHARGING_APPLY: '反映',
+			CHARGING_TRIED: 'チャージ判定しました',
+			CHARGING_APPLIED: 'チャージ判定の結果を反映しました',
+			CHARGING_COUNT: 'つ',
+
+			BOUQUET_COUNT: '枚',
+			BOUQUET_STOCK: '残',
+
+			ATTACKING: 'アタック判定のダイスを振る',
+			ATTACKING_DICE: 'ダイス',
+			ATTACKING_COUNT: 'つ',
+
+			MOVED_TO_PREFIX: '',
+			MOVED_TO_SUFFIX: 'に移動しました',
+
+			SHARED: '状態を共有しました'
+		}
+};
+
 Tattes.Bringer = {};
 Tattes.Bringer.CONSTS = {
 		ID: 'tattes-bringer',
 		BOUQUET_ON: 'ブーケを表示する',
 		BOUQUET_OFF: 'ブーケを表示しない',
 		BOUQUET: 'ブーケ所持数',
+		BOUQUET_SHARE_COUNT: 'ブーケの数を共有する',
+		BOUQUET_SHARED_COUNT: 'ブーケの数を共有しました',
 		BOUQUET_PARSER: /ブーケ譲渡(\d+)/,
-		BOUQUET_HOW_TO_GET: '「ブーケ譲渡」と書かれた発言をクリックするとブーケを受け取れます'
+		BOUQUET_HOW_TO_GET: '「ブーケを受け取る」と書かれたボタンをクリックするとブーケを受け取れます',
+		NOTIFY_GET_BOUQUET: 'ブーケを\d枚受け取りました (合計\d)'
 };
 
 Tattes.Sheath = {};
@@ -64,6 +111,7 @@ Tattes.Chat = {};
 Tattes.Chat.CommonChat = {};
 Tattes.Chat.CommonChat.CONSTS = {
 		ID: 'tattes-chat-commonchat',
+		NOWLOADING: '発言を取得中……',
 		UNEXPECTED: ['[]', '""', `""`, '「」', '()', '（）', '<>', '＜＞', ''],
 		IS_IT_OK: '誤送信な気がします。本当に送りますか?',
 		HOW_TO_POST: 'SHIFT + Enter で改行、Enter で発言。CTRL + [ で 「」 挿入',
@@ -72,10 +120,43 @@ Tattes.Chat.CommonChat.CONSTS = {
 			0: '',
 			1: '＠ ブーケ',
 			2: '＠ 雑談'
-		}
+		},
+		GET_BOUQUET: 'ブーケを受け取る',
+		BOUQUET_PARSER: /ブーケ譲渡(\d+)/,
+		MAP_REGEXP: Tattes.Battle.CONSTS.MAP.REGEXP
 };
 Tattes.Chat.CommonChat.REGEXP = [
 	/^\*?\*?([^:：\*\n]+)\*?\*?[:：]?\s*(「[^」]*」)/,
 	/^\*?\*?([^:：\*\n]+)\*?\*?[:：]([^「]*)/
 ];
 
+Tattes.Chat.BattleChat = {};
+Tattes.Chat.BattleChat.CONSTS = {
+		ID: 'tattes-chat-battlechat'
+};
+
+Tattes.ChargeDice = {};
+Tattes.ChargeDice.CONSTS = {
+		ID: 'tattes-battle-chargeDice'
+};
+
+Tattes.Skill = {};
+Tattes.Skill.CONSTS = {
+		ID: 'tattes-skill'
+};
+Tattes.Skill.REGEXP = {
+		ATTACK_DICE: /[アAＡ]タ?ッ?ク?判?定?[:：](\d+)/
+};
+
+Tattes.MENU = {};
+Tattes.MENU.CONSTS = {
+		ID: 'tattes-menu',
+		PAGES: [
+			'ブリンガー',
+			'シース',
+			'観客',
+			'バトル'
+		]
+};
+
+Tattes.VERSION = 'v20190707';
