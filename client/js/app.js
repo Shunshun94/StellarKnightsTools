@@ -13,6 +13,7 @@ const initTattes = async (params) =>{
 		bringer: characterData.base,
 		sheath: characterData.sheath
 	};
+	data.version = Tattes.VERSION;
 	data.bringer.iconName = params.iconName ? decodeURI(params.iconName) : data.bringer.name.substr(0,1);
 	data.bringer.id = characterId;
 	data.bringer.isBringer = true;

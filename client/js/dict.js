@@ -146,3 +146,16 @@ Tattes.Skill.CONSTS = {
 Tattes.Skill.REGEXP = {
 		ATTACK_DICE: /[アAＡ]タ?ッ?ク?判?定?[:：](\d+)/
 };
+
+Tattes.MENU = {};
+Tattes.MENU.CONSTS = {
+		ID: 'tattes-menu',
+		PAGES: [
+			'ブリンガー',
+			'シース',
+			'観客',
+			'バトル'
+		]
+};
+
+Tattes.VERSION = 'v20190707';
