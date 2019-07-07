@@ -27,3 +27,7 @@ TatteS! は単一の画面を開くのみで銀剣のステラナイツをプレ
 **E**moi   
 **S**tellar knights   
 の略です。
+
+### リポジトリ
+
+[https://github.com/Shunshun94/StellarKnightsTools](https://github.com/Shunshun94/StellarKnightsTools)
