@@ -163,14 +163,13 @@ Vue.component('tattes-battle', {
 							fill-opacity="0.2"
 							stroke="black"
 						/>
-
 					</svg>			
 				</div>
 			</div>
 			<div id="${Tattes.Battle.CONSTS.ID}-act-attack">
 				<h3>${Tattes.Battle.CONSTS.ACT.ATTACK}</h3>
-				<input v-model="attackDices" type="number" min="1" />
 				<button @click="attack">${Tattes.Battle.CONSTS.ACT.ATTACKING}</button>
+				<input v-model="attackDices" type="number" min="1" />　${Tattes.Battle.CONSTS.ACT.ATTACKING_COUNT}
 			</div>
 		</div>
 	</section>`,

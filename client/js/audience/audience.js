@@ -49,10 +49,10 @@ Vue.component('tattes-audience', {
 				<hr/>
 				<div id="${Tattes.Audience.CONSTS.ID}-bouquetconsole-bouquetCount">
 					<h3>${Tattes.Audience.CONSTS.THROWN_BOUQUET_COUNT}</h3>
-					<input id="${Tattes.Audience.CONSTS.ID}-bouquetconsole-bouquetCount-counter" type="number" min="0" v-model="thrownBouquet" />
 					<button 
 						@click="clearBouquet"
 						id="${Tattes.Audience.CONSTS.ID}-bouquetconsole-clearing">${Tattes.Audience.CONSTS.CLEARING}</button>
+					<input id="${Tattes.Audience.CONSTS.ID}-bouquetconsole-bouquetCount-counter" type="number" min="0" v-model="thrownBouquet" />
 					<h3>${Tattes.Audience.CONSTS.THROWN_BOUQUET_COUNT_TOTAL}</h3>
 					<input id="${Tattes.Audience.CONSTS.ID}-bouquetconsole-bouquetCount-counter-total" type="number" min="0" v-model="thrownBouquetTotal" />
 				</div>
