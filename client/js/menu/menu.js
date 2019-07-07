@@ -13,6 +13,7 @@ Vue.component('tattes-menu', {
 				class="${Tattes.MENU.CONSTS.ID}-tab"
 				v-on:click="changeTab(index)"
 				>{{command}}</span>
+			{{version}}
 		</nav>`,
 	methods: {
 		changeTab: function(index) {
