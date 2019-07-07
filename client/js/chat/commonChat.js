@@ -118,28 +118,29 @@ Vue.component('common-chat-post', {
 			});
 			if(reResults.length) {
 				if(reResults[0][1].indexOf('http') > -1) {
-					return this.post[1].senderName;
+					return this.post[1].senderName.trim();
 				} else {
-					return reResults[0][1];
+					return reResults[0][1].trim();
 				}
 			} else {
-				return this.post[1].senderName;
+				return this.post[1].senderName.trim();
 			}
 		},
 		message: function() {
+			const msgCand = this.post[1].message.replace(Tattes.Chat.CommonChat.CONSTS.MAP_REGEXP, '').trim();
 			const reResults = Tattes.Chat.CommonChat.REGEXP.map((re, i)=>{
-				return re.exec(this.post[1].message);
+				return re.exec(msgCand);
 			}).filter((re)=>{
 				return re;
 			});
 			if(reResults.length) {
 				if(reResults[0][1].indexOf('http') > -1) {
-					return this.post[1].message;
+					return msgCand;
 				} else {
 					return reResults[0][2];
 				}
 			} else {
-				return this.post[1].message;
+				return msgCand;
 			}
 		}
 	}

@@ -184,7 +184,7 @@ Vue.component('tattes-battle', {
 			if(mapCand.length) {
 				const raw = mapCand[0];
 				this.mapArray = mapCand[0].slice(1,7);
-				return `http://${mapCand[0][0]}`;
+				return mapCand[0][0];
 			} else {
 				return Tattes.Battle.CONSTS.MAP.CGI;
 			}

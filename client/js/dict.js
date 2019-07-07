@@ -36,7 +36,7 @@ Tattes.Battle.CONSTS = {
 		ID: 'tattes-battle',
 		MAP: {
 			CGI: 'http://hiyo-hitsu.sakura.ne.jp/sn/map.cgi',
-			REGEXP: /hiyo-hitsu\.sakura\.ne\.jp\/sn\/map\.cgi\?place=(.*),(.*),(.*),(.*),(.*),(.*)/
+			REGEXP: /https?:\/\/hiyo-hitsu\.sakura\.ne\.jp\/sn\/map\.cgi\?place=(.*),(.*),(.*),(.*),(.*),(.*)/
 		},
 		INFO: {
 			CHARGE: 'チャージ',
@@ -121,16 +121,17 @@ Tattes.Chat.CommonChat.CONSTS = {
 		},
 		GET_BOUQUET: 'ブーケを受け取る',
 		BOUQUET_PARSER: /ブーケ譲渡(\d+)/,
+		MAP_REGEXP: Tattes.Battle.CONSTS.MAP.REGEXP
 };
-Tattes.Chat.BattleChat = {};
-Tattes.Chat.BattleChat.CONSTS = {
-		ID: 'tattes-chat-battlechat',
-};
-
 Tattes.Chat.CommonChat.REGEXP = [
 	/^\*?\*?([^:：\*\n]+)\*?\*?[:：]?\s*(「[^」]*」)/,
 	/^\*?\*?([^:：\*\n]+)\*?\*?[:：]([^「]*)/
 ];
+
+Tattes.Chat.BattleChat = {};
+Tattes.Chat.BattleChat.CONSTS = {
+		ID: 'tattes-chat-battlechat'
+};
 
 Tattes.ChargeDice = {};
 Tattes.ChargeDice.CONSTS = {
