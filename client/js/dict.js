@@ -126,8 +126,8 @@ Tattes.Chat.CommonChat.CONSTS = {
 		MAP_REGEXP: Tattes.Battle.CONSTS.MAP.REGEXP
 };
 Tattes.Chat.CommonChat.REGEXP = [
-	/^\*?\*?([^:：\*\n]+)\*?\*?[:：]?\s*(「[^」]*」)/,
-	/^\*?\*?([^:：\*\n]+)\*?\*?[:：]([^「]*)/
+	/^\*?\*?([^「:：\*\n]+)\*?\*?[:：]?\s*(「[^」]*」)/,
+	/^\*?\*?([^「:：\*\n]+)\*?\*?[:：]([^「]*)/
 ];
 
 Tattes.Chat.BattleChat = {};
