@@ -1,7 +1,7 @@
 const initTattes = async (params) =>{
 	const characterSheetClient = new io.github.shunshun94.trpg.characterSheetsMasashige.client();
 
-	const characterId = params.sheet.split('=')[1];
+	const characterId = params.sheet === Tattes.CONSTS.VISITOR ? Tattes.CONSTS.DUMMY_CHARACTER : params.sheet.split('=')[1];
 	const characterData = await characterSheetClient.sendRequest(Tattes.CONSTS.SYSTEM_CODE, characterId);
 
 	const dataType = characterData.base.knight.type;
@@ -50,6 +50,12 @@ const initTattes = async (params) =>{
 			channel: 0
 		}]]
 	};
+	if( params.sheet === Tattes.CONSTS.VISITOR ) {
+		data.bringer.player = Tattes.CONSTS.AUDIENCE;
+		data.activeTab = 2;
+		data.type = Tattes.CONSTS.VISITOR
+	}
+
 	const vueObject = new Vue({
 		el: '#tattes',
 		data: data,

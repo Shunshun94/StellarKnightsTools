@@ -7,7 +7,10 @@ Tattes.CONSTS = {
 		TOTAL: '合計',
 		EMBRACE: 'エンブレイス',
 		ECLIPSE: 'エクリプス',
-		STELLAR_KNIGHT: 'ステラナイト'
+		STELLAR_KNIGHT: 'ステラナイト',
+		VISITOR: 'visitor',
+		AUDIENCE: '観客',
+		DUMMY_CHARACTER: 'ahVzfmNoYXJhY3Rlci1zaGVldHMtbXByFwsSDUNoYXJhY3RlckRhdGEY1fjLpwIM'
 };
 Tattes.DUMMY_SHEATH = {
 		"age": "42",
