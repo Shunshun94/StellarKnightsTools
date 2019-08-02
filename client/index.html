@@ -35,9 +35,7 @@
 		<li>Discord のトークンを取得しておく</li>
 		<li>Discord にメインチャンネル、ブーケ用チャンネル、雑談用チャンネルを用意しておく</li>
 	</ul>
-	<p>キャラクターシートの URL<br/>　<input type="text" v-model="sheet" /><br/>
-	<span class="explanation">現時点ではステラナイツのシートのみに対応しています。エンブレイズ・エクリプスを扱う場合もステラナイツとして作成してください。</span><br/>
-	<span class="explanation">エンブレイズの場合もブリンガーおよびシースのパートナーとなるキャラクターシートの URL を任意のキャラクターシートを選択し、入力してください。</span></p>
+	<p>キャラクターシートの URL<br/>　<input type="text" v-model="sheet" /></p>
 	<p :style="isIconNameOK">マップ上での表示名<br/>　<input type="text" v-model="iconName" /><br/>
 	<span class="explanation">ミニマップ上での表示名を設定します。識別できる範囲で短い名前(1-2文字)にしてください。設定しなかった場合ブリンガーの名前1文字目が使われます。</span></p>
 	<p>トークン<br/>　<input type="text" v-model="token" /><br/>

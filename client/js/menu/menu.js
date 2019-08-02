@@ -1,8 +1,8 @@
 Vue.component('tattes-menu', {
-	props: ['version'],
+	props: ['version', 'type'],
 	data: function() {
 		return {
-			commands: Tattes.MENU.CONSTS.PAGES,
+			commands: Tattes.MENU.CONSTS.PAGES, //this.type === Tattes.CONSTS.EMBRACE ? Tattes.MENU.CONSTS.SHEATHLESS_PAGES : Tattes.MENU.CONSTS.PAGES,
 			activeTab: 0
 		}
 	},
@@ -11,6 +11,7 @@ Vue.component('tattes-menu', {
 				v-for="(command, index) in commands"
 				v-bind:class="{ active: activeTab===index }"
 				class="${Tattes.MENU.CONSTS.ID}-tab"
+				v-show="index!==1 || type !== '${Tattes.CONSTS.EMBRACE}'"
 				v-on:click="changeTab(index)"
 				>{{command}}</span>
 			{{version}}
