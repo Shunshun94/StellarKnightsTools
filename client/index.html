@@ -35,7 +35,8 @@
 		<li>Discord のトークンを取得しておく</li>
 		<li>Discord にメインチャンネル、ブーケ用チャンネル、雑談用チャンネルを用意しておく</li>
 	</ul>
-	<p>キャラクターシートの URL<br/>　<input type="text" v-model="sheet" /></p>
+	<p>キャラクターシートの URL<br/>　<input type="text" v-model="sheet" />
+	<button @click="beVisitor">観客として参加する</button></p>
 	<p :style="isIconNameOK">マップ上での表示名<br/>　<input type="text" v-model="iconName" /><br/>
 	<span class="explanation">ミニマップ上での表示名を設定します。識別できる範囲で短い名前(1-2文字)にしてください。設定しなかった場合ブリンガーの名前1文字目が使われます。</span></p>
 	<p>トークン<br/>　<input type="text" v-model="token" /><br/>
@@ -107,6 +108,11 @@ const vueObject = new Vue({
 		}
 	},
 	methods: {
+		beVisitor: function() {
+			this.sheet = 'visitor';
+			this.iconName =　'-';
+			alertify.message('キャラクターシートを visitor にしたまま接続すると観客として参加できます');
+		},
 		updateMain: function(channel) {
 			this.mainChannel = channel;
 		},
