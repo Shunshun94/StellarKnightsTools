@@ -49,6 +49,7 @@ Tattes.Audience.CONSTS = {
 		BOUQUET_THROW: 'ブーケ譲渡',
 		CLEARING: '清算する',
 		NAME: '名前',
+		ENTER_SCENE_WARNING: 'メインのチャットで発言する設定になっています。発言する前にルールブック P.118 等を確認することをお勧めします',
 		BUTTONS: {
 			BOUQUET: 'ブーケを投げる準備をする (CTRL+B)',
 			TATTES: '「はぁ、尊い」とだけ言ってブーケを投げる',
@@ -79,12 +80,14 @@ Tattes.Battle.CONSTS = {
 		},
 		ACT: {
 			CHARGE: 'チャージ',
-			SKILLS: 'スキル',
+			SKILLS: 'スキル (各スキルをクリックでチャットに名前コピー / アタック判定にダイス数コピー)',
 			MOVE: '移動',
 			ATTACK: 'アタック判定',
 			BOUQUET: 'ブーケ使用',
 			ROUNDS: '現在のラウンド数',
 			STATUS: '状態を共有する',
+
+			STATUS_BUTTON: 'HP、ブーケ数\nチャージ状況を共有',
 
 			CHARGING: 'チャージ判定のダイスを振る',
 			CHARGING_RESULT: 'チャージ判定 結果',

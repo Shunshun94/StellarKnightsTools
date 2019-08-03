@@ -14,7 +14,7 @@ Vue.component('tattes-audience', {
 			<h2 id="${Tattes.Audience.CONSTS.ID}-title">${Tattes.Audience.CONSTS.TITLE}</h2>
 			<div id="${Tattes.Audience.CONSTS.ID}-bouquetchat">
 				<div class="${Tattes.Chat.CommonChat.CONSTS.ID}-input">
-					<select v-model="channel" class="${Tattes.Chat.CommonChat.CONSTS.ID}-input-channel">
+					<select @change="updateTab" v-model="channel" class="${Tattes.Chat.CommonChat.CONSTS.ID}-input-channel">
 						<option value="1">${Tattes.Chat.CommonChat.CONSTS.TABS[1]}</option>
 						<option value="2">${Tattes.Chat.CommonChat.CONSTS.TABS[2]}</option>
 						<option value="0">${Tattes.Chat.CommonChat.CONSTS.TABS[0]}</option>
@@ -68,6 +68,11 @@ Vue.component('tattes-audience', {
 		}
 	},
 	methods: {
+		updateTab: function() {
+			if(this.channel === '0') {
+				alertify.warning(Tattes.Audience.CONSTS.ENTER_SCENE_WARNING);
+			}
+		},
 		editText: function(contents) {
 			this.text = contents;
 		},
