@@ -23,7 +23,7 @@ Vue.component('tattes-character-status', {
 		</span>	
 	</div>
 
-	<pre class="${Tattes.Character.Status.CONSTS.ID}-note">{{note}}</pre>
+	<div class="${Tattes.Character.Status.CONSTS.ID}-note">{{note}}</div>
 	</div>`,
 	computed: {
 		imageUrl: function() {

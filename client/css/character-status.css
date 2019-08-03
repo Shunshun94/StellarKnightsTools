@@ -41,4 +41,5 @@
 	padding:8px;
 	height:444px;
 	line-height:1.5em;
+	white-space: pre-wrap;
 }
