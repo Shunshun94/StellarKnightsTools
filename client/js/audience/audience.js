@@ -5,7 +5,8 @@ Vue.component('tattes-audience', {
 			text: '',
 			channel: 1,
 			thrownBouquet: 0,
-			thrownBouquetTotal: 0
+			thrownBouquetTotal: 0,
+			name: this.plname
 		};
 	},
 	template: `
@@ -14,14 +15,16 @@ Vue.component('tattes-audience', {
 			<div id="${Tattes.Audience.CONSTS.ID}-bouquetchat">
 				<div class="${Tattes.Chat.CommonChat.CONSTS.ID}-input">
 					<select v-model="channel" class="${Tattes.Chat.CommonChat.CONSTS.ID}-input-channel">
-						<option value="1">ブーケ</option>
-						<option value="2">雑談</option>
+						<option value="1">${Tattes.Chat.CommonChat.CONSTS.TABS[1]}</option>
+						<option value="2">${Tattes.Chat.CommonChat.CONSTS.TABS[2]}</option>
+						<option value="0">${Tattes.Chat.CommonChat.CONSTS.TABS[0]}</option>
 					</select>
+					<p class="${Tattes.Audience.CONSTS.ID}-input-name">${Tattes.Audience.CONSTS.NAME}:<input type="text" v-model="name" /></p>
 					<textarea 
 						placeholder="${Tattes.Chat.CommonChat.CONSTS.INPUTAREA}"
 						v-model="text"
 						@keydown.enter="submit"
-						@keydown.ctrl.66="insertText('${Tattes.Audience.CONSTS.TEXTS.BOUQUET}')"
+						@keydown.ctrl.66="insertText('${Tattes.Audience.CONSTS.TEXTS.BOUQUET}');channel=1;"
 						:class="inputTextClass"></textarea>
 					<p class="${Tattes.Chat.CommonChat.CONSTS.ID}-input-explanation">${Tattes.Audience.CONSTS.HOW_TO_POST}</p>
 				</div>
@@ -110,7 +113,7 @@ Vue.component('tattes-audience', {
 			const data = {
 					message: text,
 					channel: this.channel,
-					name: this.plname
+					name: this.name
 			};
 			this.$emit(`${Tattes.Audience.CONSTS.ID}-events-sendchat`, data);
 		}

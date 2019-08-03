@@ -9,8 +9,8 @@ Vue.component('battle-chat', {
 		<div class="${Tattes.Chat.BattleChat.CONSTS.ID}">
 			<div class="${Tattes.Chat.CommonChat.CONSTS.ID}-input">
 				<select v-model="channel" class="${Tattes.Chat.CommonChat.CONSTS.ID}-input-channel">
-					<option value="0">メイン</option>
-					<option value="2">雑談</option>
+					<option value="0">${Tattes.Chat.CommonChat.CONSTS.TABS[0]}</option>
+					<option value="2">${Tattes.Chat.CommonChat.CONSTS.TABS[2]}</option>
 				</select>
 				<textarea 
 					placeholder="${Tattes.Chat.CommonChat.CONSTS.INPUTAREA}"

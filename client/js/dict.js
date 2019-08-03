@@ -48,6 +48,7 @@ Tattes.Audience.CONSTS = {
 		THROWN_BOUQUET_COUNT_TOTAL: '投げたブーケの数 (トータル)',
 		BOUQUET_THROW: 'ブーケ譲渡',
 		CLEARING: '清算する',
+		NAME: '名前',
 		BUTTONS: {
 			BOUQUET: 'ブーケを投げる準備をする (CTRL+B)',
 			TATTES: '「はぁ、尊い」とだけ言ってブーケを投げる',
@@ -152,6 +153,11 @@ Tattes.Chat.CommonChat.CONSTS = {
 			1: '＠ ブーケ',
 			2: '＠ 雑談'
 		},
+		TABS: [
+			'メイン',
+			'ブーケ',
+			'雑談'
+		],
 		GET_BOUQUET: 'ブーケを受け取る',
 		BOUQUET_PARSER: /ブーケ譲渡(\d+)/,
 		MAP_REGEXP: Tattes.Battle.CONSTS.MAP.REGEXP
