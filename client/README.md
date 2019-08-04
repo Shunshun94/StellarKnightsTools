@@ -31,3 +31,8 @@ TatteS! は単一の画面を開くのみで銀剣のステラナイツをプレ
 ### リポジトリ
 
 [https://github.com/Shunshun94/StellarKnightsTools](https://github.com/Shunshun94/StellarKnightsTools)
+
+### OGP 画像
+
+jurapolle さんの [結婚式-brautstrauß-2122697](https://pixabay.com/ja/photos/%E7%B5%90%E5%A9%9A%E5%BC%8F-brautstrau%C3%9F-2122697/)　を使用して作成しました。   
+[Pixabay License](https://pixabay.com/ja/service/license/) で配布されています。
