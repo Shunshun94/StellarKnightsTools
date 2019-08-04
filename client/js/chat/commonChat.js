@@ -3,15 +3,16 @@ Vue.component('common-chat', {
 	data: function() {
 		return {
 			text: '',
-			channel: 0
+			channel: 0,
+			name: ''
 		};
 	},
 	template: `
 		<div class="${Tattes.Chat.CommonChat.CONSTS.ID}">
 			<div class="${Tattes.Chat.CommonChat.CONSTS.ID}-input">
 				<select v-model="channel" class="${Tattes.Chat.CommonChat.CONSTS.ID}-input-channel">
-					<option value="0">メイン</option>
-					<option value="2">雑談</option>
+					<option value="0">${Tattes.Chat.CommonChat.CONSTS.TABS[0]}</option>
+					<option value="2">${Tattes.Chat.CommonChat.CONSTS.TABS[2]}</option>
 				</select>
 				<textarea 
 					placeholder="${Tattes.Chat.CommonChat.CONSTS.INPUTAREA}"
@@ -49,7 +50,7 @@ Vue.component('common-chat', {
 				// 少し処理を遅延させないとカーソルの移動が DOM の再描画で上書きされてしまう
 				// 描画終わりそうな短い時間待った上でカーソルを動かす
 				setTimeout(()=>{
-					this.$el.querySelector('textarea').setSelectionRange(1,1);
+					e.target.setSelectionRange(1,1);
 				}, 200);
 			}
 		},

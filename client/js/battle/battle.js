@@ -46,7 +46,7 @@ Vue.component('tattes-battle', {
 
 			<div id="${Tattes.Battle.CONSTS.ID}-act-shareinfo">
 				<h3>${Tattes.Battle.CONSTS.ACT.STATUS}</h3>
-				<button @click="shareInfo">${Tattes.Battle.CONSTS.ACT.STATUS}</button>
+				<button @click="shareInfo">${Tattes.Battle.CONSTS.ACT.STATUS_BUTTON}</button>
 			</div>
 
 			<div id="${Tattes.Battle.CONSTS.ID}-act-charge">

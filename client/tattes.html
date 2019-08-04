@@ -4,7 +4,7 @@
 	　prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
 <meta property="og:title" content="TatteS! - Tool for Advanced Tables which are Tattoi and Emoi Stellar knights" />
 <meta property="og:type" content="website" />
-
+<meta property="og:image" content="https://shunshun94.github.io/StellarKnightsTools/client/img/ogp.png" />
 <meta property="og:site_name" content="TatteS! - Tool for Advanced Tables which are Tattoi and Emoi Stellar knights" />
 <meta property="og:description"
 	content="銀剣のステラナイツを Discord 上で高速・快適にプレイし、尊さに注力できるようにするツール" />
@@ -29,6 +29,7 @@
 	<div id="tattes">
 		<tattes-menu
 			v-bind:version="version"
+			v-bind:type="type"
 			v-on:tattes-menu-events-changetab="changeTab"></tattes-menu>
 		<div id="tattes-contents">
 			<tattes-bringer

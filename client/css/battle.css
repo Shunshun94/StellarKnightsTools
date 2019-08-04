@@ -88,7 +88,9 @@
 }
 
 #tattes-battle-act > #tattes-battle-act-shareinfo > button {
-	padding:7px;
+	padding:2px;
+	white-space: pre-wrap;
+	text-align:left;
 }
 
 #tattes-battle-act > #tattes-battle-act-charge > button {
@@ -184,5 +186,5 @@
 #tattes-battle-act-attack {
 	position:absolute;
 	left: 368px;
-	top: 460px;
+	top: 480px;
 }

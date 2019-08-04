@@ -1,5 +1,5 @@
 Vue.component('tattes-menu', {
-	props: ['version'],
+	props: ['version', 'type'],
 	data: function() {
 		return {
 			commands: Tattes.MENU.CONSTS.PAGES,
@@ -11,6 +11,7 @@ Vue.component('tattes-menu', {
 				v-for="(command, index) in commands"
 				v-bind:class="{ active: activeTab===index }"
 				class="${Tattes.MENU.CONSTS.ID}-tab"
+				v-show="(index!==1 || type !== '${Tattes.CONSTS.EMBRACE}') && (index===2 || type !== '${Tattes.CONSTS.VISITOR}') "
 				v-on:click="changeTab(index)"
 				>{{command}}</span>
 			{{version}}

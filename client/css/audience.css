@@ -11,6 +11,19 @@
 	display:inline-block;
 }
 
+.tattes-audience-input-name {
+	position: absolute;
+	top:4px;
+	right:8px;
+	margin-top:0px;
+	margin-bottom:0px;
+}
+
+#tattes-audience-bouquetchat .tattes-chat-commonchat-input-text-0 {
+	background-color: #555500;
+	color:white;
+}
+
 #tattes-audience-bouquetconsole {
 	border:3px black solid;
 	font-size:80%;

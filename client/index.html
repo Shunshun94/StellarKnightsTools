@@ -4,13 +4,14 @@
 	　prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
 <meta property="og:title" content="TatteS! - Tool for Advanced Tables which are Tattoi and Emoi Stellar knights" />
 <meta property="og:type" content="website" />
-
+<meta property="og:image" content="https://shunshun94.github.io/StellarKnightsTools/client/img/ogp.png" />
 <meta property="og:site_name" content="TatteS! - Tool for Advanced Tables which are Tattoi and Emoi Stellar knights" />
 <meta property="og:description"
 	content="銀剣のステラナイツを Discord 上で高速・快適にプレイし、尊さに注力できるようにするツール" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@Shunshun94" />
 <meta name="twitter:text:title" content="TatteS! - Tool for Advanced Tables which are Tattoi and Emoi Stellar knights" />
+
 <link rel="stylesheet" href="css/tattes.css" />
 <meta charset="UTF-8">
 <title>TatteS!</title>
@@ -35,9 +36,8 @@
 		<li>Discord のトークンを取得しておく</li>
 		<li>Discord にメインチャンネル、ブーケ用チャンネル、雑談用チャンネルを用意しておく</li>
 	</ul>
-	<p>キャラクターシートの URL<br/>　<input type="text" v-model="sheet" /><br/>
-	<span class="explanation">現時点ではステラナイツのシートのみに対応しています。エンブレイズ・エクリプスを扱う場合もステラナイツとして作成してください。</span><br/>
-	<span class="explanation">エンブレイズの場合もブリンガーおよびシースのパートナーとなるキャラクターシートの URL を任意のキャラクターシートを選択し、入力してください。</span></p>
+	<p>キャラクターシートの URL<br/>　<input type="text" v-model="sheet" />
+	<button @click="beVisitor">観客として参加する</button></p>
 	<p :style="isIconNameOK">マップ上での表示名<br/>　<input type="text" v-model="iconName" /><br/>
 	<span class="explanation">ミニマップ上での表示名を設定します。識別できる範囲で短い名前(1-2文字)にしてください。設定しなかった場合ブリンガーの名前1文字目が使われます。</span></p>
 	<p>トークン<br/>　<input type="text" v-model="token" /><br/>
@@ -109,6 +109,11 @@ const vueObject = new Vue({
 		}
 	},
 	methods: {
+		beVisitor: function() {
+			this.sheet = 'visitor';
+			this.iconName =　'-';
+			alertify.message('キャラクターシートを visitor にしたまま接続すると観客として参加できます');
+		},
 		updateMain: function(channel) {
 			this.mainChannel = channel;
 		},
