@@ -204,4 +204,4 @@ Tattes.MENU.CONSTS = {
 		]
 };
 
-Tattes.VERSION = 'v20190707';
+Tattes.VERSION = 'v20190804';
